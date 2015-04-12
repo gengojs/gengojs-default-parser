@@ -42,10 +42,6 @@ var _d = require('debug');
 
 var _d2 = _interopRequireWildcard(_d);
 
-var _bind = require('bind-fn');
-
-var _bind2 = _interopRequireWildcard(_bind);
-
 var vsprintf = _sprintf2['default'].vsprintf;
 var debug = _d2['default']('default-parser');
 
@@ -152,7 +148,7 @@ var Engine = (function () {
       // Get the default parser if any
       var _default = overrides.parsers['default'];
       // Allow users to override the default parser
-      if (_import2['default'].isFunction(_default)) phrase = _bind2['default'](_default, this)(this.input());else try {
+      if (_import2['default'].isFunction(_default)) phrase = _default.bind(this)(this.input());else try {
         // Check if markdown is enabled
         if (markdown.enabled) phrase = this.markdown(phrase);
         // Apply interpolation
@@ -182,7 +178,7 @@ var Engine = (function () {
       // Get the format parser if any
       var _format = overrides.engine.format;
       // Allow users to override the format parser
-      if (_import2['default'].isFunction(_format)) phrase = _bind2['default'](_format, this)(this.input());else try {
+      if (_import2['default'].isFunction(_format)) phrase = _format.bind()(this.input());else try {
         if (markdown.enabled) phrase = this.markdown(phrase);
         result = this.messageFormat(phrase).format(this.input().template);
       } catch (error) {
@@ -212,7 +208,7 @@ var Engine = (function () {
       debug('process:', 'find:', 'object:', object);
       // Allow users to override the find function
       if (_import2['default'].isFunction(_find)) {
-        return _bind2['default'](_find, this)(object, key);
+        return _find.bind(this)(object, key);
       } else {
         if (!object) {
           return '';
