@@ -1,6 +1,6 @@
 {
   "name": "gengojs-default-parser",
-  "version": "0.0.1-beta.3",
+  "version": "0.0.1-beta.4",
   "description": "The default parser plugin for gengojs.",
   "main": "index.js",
   "dependencies": {
@@ -21,7 +21,7 @@
     "load-grunt-tasks": "^3.1.0"
   },
   "scripts": {
-    "test": "grunt production"
+    "test": "grunt production",
   },
   "repository": {
     "type": "git",
