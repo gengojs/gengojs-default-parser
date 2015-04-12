@@ -33,6 +33,12 @@ var Filter = (function () {
 
   _createClass(Filter, [{
     key: 'filter',
+
+    /**
+     * Filters the input
+     * @param  {Object} input
+     * @return {Object}
+     */
     value: function filter(input) {
       debug('process:', 'filter');
       var phrase = input.phrase;
@@ -58,6 +64,9 @@ var Filter = (function () {
                 case 'parser':
                   if (!this._keywords.parser) this._keywords.parser = oitem;
                   break;
+                case 'locale':
+                  if (!this._keywords.locale) this._keywords.locale = oitem;
+                  break;
                 default:
                   if (!this._templates[key]) this._templates[key] = oitem;
                   break;
@@ -76,6 +85,9 @@ var Filter = (function () {
             case 'parser':
               if (!this._keywords.parser) this._keywords.parser = item;
               break;
+            case 'locale':
+              if (!this._keywords.locale) this._keywords.locale = item;
+              break;
             default:
               if (!this._templates[key]) this._templates[key] = item;
               break;
@@ -85,6 +97,11 @@ var Filter = (function () {
     }
   }, {
     key: 'input',
+
+    /**
+     * Returns the filtered input
+     * @return {Object}
+     */
     value: (function (_input) {
       function input() {
         return _input.apply(this, arguments);

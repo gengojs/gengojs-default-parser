@@ -36,7 +36,9 @@ var _d2 = _interopRequireWildcard(_d);
 
 var debug = _d2['default']('default-parser');
 
-/* Class Type */
+////////////////
+// Class Type //
+////////////////
 
 var Type = (function () {
   function Type(input, _this) {
@@ -48,13 +50,15 @@ var Type = (function () {
     debug('input:', input);
     // Set dependencies
     this.header = _this.header;
-    this.router = _router2['default'](_this);
+    this.router = _router2['default'](input, _this);
     // Set options
     this.options = _this.options.parser;
     // Set filtered input
     this.filter = (function () {
+      var _filter = _this2.options.overrides._filter;
+
       // Allow users to override the filter
-      if (_import2['default'].isFunction(_this2.options.filter)) return _this2.options.filter(input, {
+      if (_import2['default'].isFunction(_filter)) return _filter(input, {
         debug: debug,
         _: _import2['default']
       });else return _filter2['default'](input).input();
@@ -71,30 +75,36 @@ var Type = (function () {
   _createClass(Type, [{
     key: 'input',
 
-    /* Input returns the filtered input */
+    /**
+     * Returns the filtered input
+     * @return {Object}
+     */
     value: function input() {
       return this.filter;
     }
   }, {
     key: 'parse',
 
-    /* Parse return the parsed result from the input */
+    /**
+     * Finds the data containing result from the input
+     * @return {String}
+     */
     value: function parse() {
       debug('process:', 'type');
       debug('input:', this.input());
-      //if the phrase contains brackets
+      // If the phrase contains brackets
       if (this.regex.bracket().match())
-        //return the regex result and the type of parser
+        // Return the regex result and the type of parser
         this.type = {
           key: this.regex.bracket().exec(),
           type: 'bracket'
         };
-        //if the phrase contains dots
+        // If the phrase contains dots
       else if (this.regex.dot().match()) this.type = {
         key: this.input().phrase,
         type: 'dot'
       };
-      //if the phrase is just something ordinary
+      // If the phrase is just something ordinary
       else this.type = {
         key: this.input().phrase,
         type: 'phrase'
@@ -114,6 +124,11 @@ var Type = (function () {
     }
   }, {
     key: 'getPhrase',
+
+    /**
+     * Finds the data from a string that is a phrase
+     * @return {String | Object | null}
+     */
     value: function getPhrase() {
       var keywords = this.options.keywords,
           result,
@@ -136,6 +151,11 @@ var Type = (function () {
     }
   }, {
     key: 'getBracket',
+
+    /**
+     * Parses a string that contains a bracket notation
+     * @return {String | null}
+     */
     value: function getBracket() {
       debug('process:', 'getBracket');
       var keywords = this.options.keywords,
@@ -180,6 +200,11 @@ var Type = (function () {
     }
   }, {
     key: 'getDot',
+
+    /**
+     * Parses a string that contains a dot notation
+     * @return {String | null}
+     */
     value: function getDot() {
       debug('process:', 'getDot');
       var keywords = this.options.keywords,

@@ -30,7 +30,7 @@ module.exports = function(grunt) {
         files: 'lib/**/*.js'
       }
     },
-    mocha: {
+    simplemocha: {
       all: {
         src: 'test/*.js',
         options: {
@@ -53,6 +53,6 @@ module.exports = function(grunt) {
   grunt.registerTask('production', [
     'jshint',
     'babel',
-    'mocha'
+    'simplemocha'
   ]);
 };

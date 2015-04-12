@@ -25,12 +25,15 @@ var _import2 = _interopRequireWildcard(_import);
 var debug = _d2['default']('default-parser');
 
 var Router = (function () {
-  function Router(_this) {
+  function Router(input, _this) {
     _classCallCheck(this, Router);
 
     debug('constructor:', 'Router');
     this.router = _this.router;
-    this.data = _this.backend.find(_this.header.getLocale());
+    // Get the locale from either the keyword
+    // or header
+    this.locale = _import2['default'].has(input.keywords, 'locale') ? _this.header.setLocale(input.keywords.locale) : _this.header.getLocale();
+    this.data = _this.backend.find(this.locale);
     debug('data exists:', !!this.data);
   }
 
@@ -63,9 +66,9 @@ var Router = (function () {
   return Router;
 })();
 
-exports['default'] = function (_this) {
+exports['default'] = function (input, _this) {
   'use strict';
-  return new Router(_this);
+  return new Router(input, _this);
 };
 
 module.exports = exports['default'];

@@ -6,6 +6,10 @@ var _classCallCheck = function (instance, Constructor) { if (!(instance instance
 
 var _createClass = (function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ('value' in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; })();
 
+Object.defineProperty(exports, '__esModule', {
+  value: true
+});
+
 var _find = require('../Find');
 
 var _find2 = _interopRequireWildcard(_find);
@@ -38,10 +42,16 @@ var _d = require('debug');
 
 var _d2 = _interopRequireWildcard(_d);
 
+var _bind = require('bind-fn');
+
+var _bind2 = _interopRequireWildcard(_bind);
+
 var vsprintf = _sprintf2['default'].vsprintf;
 var debug = _d2['default']('default-parser');
 
-/* Class Engine */
+///////////////////
+// Engine Class  //
+///////////////////
 
 var Engine = (function () {
   function Engine(input, _this) {
@@ -59,14 +69,29 @@ var Engine = (function () {
   _createClass(Engine, [{
     key: 'input',
 
-    /* Returns an object of the type of input. */
+    /**
+     * Returns an object of the type of input.
+     * @return {Object} The filtered input
+     *
+     * @example
+     *
+     * {
+     *   phrase:String,
+     *   arguments:Array,
+     *   keywords:Object,
+     *   template:Object
+     * }
+     */
     value: function input() {
       return this.type.input();
     }
   }, {
     key: 'run',
 
-    /* Run the parser */
+    /**
+     * Starts the engine and parses the input
+     * @return {String} The i18ned string.
+     */
     value: function run() {
       if (_import2['default'].isNull(this.input().phrase)) {
         return '';
@@ -101,18 +126,33 @@ var Engine = (function () {
   }, {
     key: 'default',
 
-    /* Default parser */
-    value: function _default() {
+    /**
+     * The default parser
+     * @return {String}
+     */
+    value: (function (_default) {
+      function _default() {
+        return _default.apply(this, arguments);
+      }
+
+      _default.toString = function () {
+        return _default.toString();
+      };
+
+      return _default;
+    })(function () {
       debug('process:', 'default');
       var phrase = this.find(this.input().phrase);
       var _options$parser = this.options.parser;
       var markdown = _options$parser.markdown;
       var parsers = _options$parser.parsers;
       var template = _options$parser.template;
-      var sprintf = _options$parser.sprintf;
+      var sprintf = _options$parser.sprintf;var overrides = parsers.overrides;
 
+      // Get the default parser if any
+      var _default = overrides.parsers['default'];
       // Allow users to override the default parser
-      if (_import2['default'].isFunction(parsers['default'])) phrase = parsers['default'].bind(this)(this.input());else try {
+      if (_import2['default'].isFunction(_default)) phrase = _bind2['default'](_default, this)(this.input());else try {
         // Check if markdown is enabled
         if (markdown.enabled) phrase = this.markdown(phrase);
         // Apply interpolation
@@ -123,21 +163,26 @@ var Engine = (function () {
         debug(error.stack || String(error));
       }
       return phrase || '';
-    }
+    })
   }, {
     key: 'format',
 
-    /* Message formatting parser */
+    /**
+     * The message formatting parser
+     * @return {String}
+     */
     value: function format() {
       debug('process:', 'format');
       var phrase = this.find(this.input().phrase),
           result;
       var _options$parser2 = this.options.parser;
       var markdown = _options$parser2.markdown;
-      var parsers = _options$parser2.parsers;
+      var parsers = _options$parser2.parsers;var overrides = parsers.overrides;
 
-      // Allow users to override the default parser
-      if (_import2['default'].isFunction(parsers['default'])) phrase = parsers.format.bind(this)(this.input());else try {
+      // Get the format parser if any
+      var _format = overrides.engine.format;
+      // Allow users to override the format parser
+      if (_import2['default'].isFunction(_format)) phrase = _bind2['default'](_format, this)(this.input());else try {
         if (markdown.enabled) phrase = this.markdown(phrase);
         result = this.messageFormat(phrase).format(this.input().template);
       } catch (error) {
@@ -148,25 +193,38 @@ var Engine = (function () {
     }
   }, {
     key: 'find',
+
+    /**
+     * Finds the translated phrase in the dictionary
+     * @param  {Object}
+     * @return {String}
+     */
     value: function find(object) {
       debug('process:', 'find');
       var _options = this.options;
       var parser = _options.parser;
       var header = _options.header;
+      var overrides = parser.overrides;
 
       var key = this.locale.toLowerCase() === header['default'].toLowerCase() ? parser.keywords['default'] : parser.keywords.translated;
+      var _find = overrides.engine.find;
       debug('process:', 'find:', 'key:', key);
       debug('process:', 'find:', 'object:', object);
-      if (!object) {
-        return '';
-      } //if the object is already a string then return
-      if (_import2['default'].isString(object)) {
-        return object;
-      } //if its a {}
-      if (_import2['default'].isPlainObject(object)) {
-        //check if already contains the key 'default' or 'translated'
-        if (_import2['default'].has(object, key)) {
-          return _import2['default'].has(object, key) ? object[key] : object;
+      // Allow users to override the find function
+      if (_import2['default'].isFunction(_find)) {
+        return _bind2['default'](_find, this)(object, key);
+      } else {
+        if (!object) {
+          return '';
+        } // If the object is already a string then return
+        if (_import2['default'].isString(object)) {
+          return object;
+        } // If it's an object
+        if (_import2['default'].isPlainObject(object)) {
+          // Check if already contains the key 'default' or 'translated'
+          if (_import2['default'].has(object, key)) {
+            return _import2['default'].has(object, key) ? object[key] : object;
+          }
         }
       }
     }
@@ -227,7 +285,7 @@ var Engine = (function () {
         var matches = phrase.match(r) || [];
         _import2['default'].forEach(matches, function (match) {
           var keys = match.substring(opening.length,
-          //chop {{ and }}
+          // Chop {{ and }}
           match.length - closing.length).trim().split('.');
           var value = _find2['default'](this.input().template).dot(keys);
           phrase = phrase.replace(match, value);
@@ -240,7 +298,9 @@ var Engine = (function () {
   return Engine;
 })();
 
-module.exports = function (input, _this) {
+exports['default'] = function (input, _this) {
   'use strict';
   return new Engine(input, _this);
 };
+
+module.exports = exports['default'];
