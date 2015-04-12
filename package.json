@@ -1,6 +1,6 @@
 {
   "name": "gengojs-default-parser",
-  "version": "0.0.1-beta.1",
+  "version": "0.0.1-beta.2",
   "description": "The default parser plugin for gengojs.",
   "main": "index.js",
   "dependencies": {
