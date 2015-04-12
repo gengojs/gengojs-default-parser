@@ -23,9 +23,13 @@ module.exports = {
     'translated': 'translated',
     'global': 'global'
   },
-  'parsers': {
-    'default': null,
-    'format': null
-  },
-  'filter': null
+  'overrides': {
+    'filter': null,
+    'engine': {
+      'default': null,
+      'format': null,
+      'find': null
+    },
+  }
+
 };
