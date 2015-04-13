@@ -53,9 +53,9 @@ var Engine = (function () {
   function Engine(input, _this) {
     _classCallCheck(this, Engine);
 
+    debug('constructor:', 'Engine');
     // Create a Type instance
     this.type = _type2['default'](input, _this);
-    debug('constructor:', 'Engine');
     // Set locale
     this.locale = _this.header.getLocale();
     // Set options
@@ -92,27 +92,24 @@ var Engine = (function () {
       if (_import2['default'].isNull(this.input().phrase)) {
         return '';
       } else {
-        // Call the default and format parsers once
-        var _default = this['default']();
-        var _format = this.format();
         // Determine if the user specified a parser
         switch (this.input().keywords.parser) {
           case 'default':
             // Render default
-            return _default;
+            return this['default']();
           case 'format':
             // Render format
-            return _format;
+            return this.format();
           case '*':
             // If formatted string was empty then it could
             // in the default string else just return an empty
             // string.
-            if (!_S2['default'](_format).isEmpty()) {
+            if (!_S2['default'](this.format()).isEmpty()) {
               debug('type:', 'format:', this.format());
-              return _format;
-            } else if (!_S2['default'](_default).isEmpty()) {
-              debug('type:', 'default:', _default);
-              return _default;
+              return this.format();
+            } else if (!_S2['default'](this['default']()).isEmpty()) {
+              debug('type:', 'default:', this['default']());
+              return this['default']();
             } else {
               return '';
             }break;
@@ -173,7 +170,7 @@ var Engine = (function () {
           result;
       var _options$parser2 = this.options.parser;
       var markdown = _options$parser2.markdown;
-      var parsers = _options$parser2.parsers;var overrides = parsers.overrides;
+      var overrides = _options$parser2.overrides;
 
       // Get the format parser if any
       var _format = overrides.engine.format;
