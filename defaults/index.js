@@ -29,7 +29,7 @@ module.exports = {
       'default': null,
       'format': null,
       'find': null
-    },
+    }
   }
 
 };
