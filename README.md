@@ -138,7 +138,21 @@ can override:
 
 For examples, check out the [GitHub page](https://github.com/iwatakeshi/gengojs-default-parser/tree/master/lib/class).
 
+## Selecting a Parser
 
+There are two types of parsers in gengojs-default-parser. The first is the default parser
+which handles Sprintf and Interpolation, and the second is format which handles 
+[MessageFormat](https://github.com/yahoo/intl-messageformat).
+
+By default, the first is your primary parser and can be changed in the options. You may also specify the type to use
+when you use the [API](https://github.com/iwatakeshi/gengojs-default-api). To do so, see the following example:
+
+```js
+// Using default parser:
+__('Hello', {parser:'default'});
+// Using format parser:
+__('You have {n, plural, =0 {no photos.}=1 {one photo.}other {# photos.}}', {parser:'format'});
+```
 
 ## Debug
 
