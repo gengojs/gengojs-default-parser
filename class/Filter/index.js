@@ -19,6 +19,7 @@ var _d = require('debug');
 var _d2 = _interopRequireWildcard(_d);
 
 var debug = _d2['default']('default-parser');
+/* Filter class */
 
 var Filter = (function () {
   function Filter(input) {

@@ -35,10 +35,7 @@ var _d = require('debug');
 var _d2 = _interopRequireWildcard(_d);
 
 var debug = _d2['default']('default-parser');
-
-////////////////
-// Class Type //
-////////////////
+/* Type class */
 
 var Type = (function () {
   function Type(input, _this) {
@@ -164,7 +161,7 @@ var Type = (function () {
           result,
           local,
           global;
-      debug('key:', key);
+      debug('process:', 'getBracket:', 'key:', key);
       try {
         // Check if router is enabled and data exists under router
         local = this.router.local();
@@ -212,6 +209,7 @@ var Type = (function () {
           result,
           local,
           global;
+      debug('process:', 'getDot:', 'key:', key);
       try {
         // Find the phrase in the local scope
         local = this.router.local();

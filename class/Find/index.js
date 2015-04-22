@@ -14,6 +14,8 @@ var _import = require('lodash');
 
 var _import2 = _interopRequireWildcard(_import);
 
+/* Find class */
+
 var Find = (function () {
   function Find(object) {
     _classCallCheck(this, Find);

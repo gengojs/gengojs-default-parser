@@ -3,7 +3,7 @@
 Object.defineProperty(exports, '__esModule', {
   value: true
 });
-// Regex class
+/* Regex class */
 function Regex(str) {
   'use strict';
   this.str = str;

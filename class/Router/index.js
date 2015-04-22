@@ -23,6 +23,7 @@ var _import = require('lodash');
 var _import2 = _interopRequireWildcard(_import);
 
 var debug = _d2['default']('default-parser');
+/* Router class */
 
 var Router = (function () {
   function Router(input, _this) {
