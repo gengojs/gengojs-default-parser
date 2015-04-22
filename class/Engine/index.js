@@ -77,10 +77,7 @@ var Engine = (function () {
           // Parse both at once
           _format = this.formatParser();
           _default = this.defaultParser();
-          if (!_S2['default'](this.formatParser(_default)).isEmpty()) {
-            _default = '';
-            throw new Error('Woops, did you forget to specify the type of parser?');
-          }
+          if (!_format && !_S2['default'](this.formatParser(_default)).isEmpty()) throw new Error('Woops, did you forget to specify the type of parser?');
         } catch (error) {
           debug(error.stack || String(error));
         }
@@ -137,7 +134,7 @@ var Engine = (function () {
       } catch (error) {
         debug(error.stack || String(error));
       }
-      return phrase || '';
+      return phrase || undefined;
     }
   }, {
     key: 'formatParser',
@@ -164,7 +161,7 @@ var Engine = (function () {
         debug(error.stack || String(error));
       }
       phrase = result;
-      return phrase || '';
+      return phrase || undefined;
     }
   }, {
     key: 'find',
