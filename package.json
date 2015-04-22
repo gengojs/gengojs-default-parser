@@ -1,13 +1,13 @@
 {
   "name": "gengojs-default-parser",
-  "version": "0.0.1-beta.9",
+  "version": "0.0.1-beta.10",
   "description": "The default parser plugin for gengojs.",
   "main": "index.js",
   "dependencies": {
     "debug": "^2.1.3",
     "intl-messageformat": "^1.1.0",
-    "lodash": "^3.6.0",
-    "markdown-it": "^4.1.0",
+    "lodash": "^3.7.0",
+    "markdown-it": "^4.2.0",
     "sprintf-js": "^1.0.2",
     "string": "^3.1.1"
   },
@@ -15,8 +15,8 @@
     "grunt": "^0.4.5",
     "grunt-autowatch": "^0.1.4",
     "grunt-babel": "^5.0.0",
-    "grunt-contrib-jshint": "^0.11.1",
-    "grunt-contrib-watch": "^0.5.3",
+    "grunt-contrib-jshint": "^0.11.2",
+    "grunt-contrib-watch": "^0.6.1",
     "grunt-simple-mocha": "^0.4.0",
     "load-grunt-tasks": "^3.1.0"
   },

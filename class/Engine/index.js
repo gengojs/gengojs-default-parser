@@ -77,7 +77,8 @@ var Engine = (function () {
           // Parse both at once
           _format = this.formatParser();
           _default = this.defaultParser();
-          if (!_format && !_S2['default'](this.formatParser(_default)).isEmpty()) throw new Error('Woops, did you forget to specify the type of parser?');
+          debug('run:', 'format:', _format);
+          debug('run:', 'default:', _default);
         } catch (error) {
           debug(error.stack || String(error));
         }
@@ -90,14 +91,36 @@ var Engine = (function () {
             // Render format
             return _format || '';
           case '*':
-            // If formatted string was empty, then it could
+            if (!_S2['default'](_format).isEmpty() && !_S2['default'](_default).isEmpty()) {
+              var result = '';
+              // If interpolation failed for default
+              if (/\{[\s\S]*\}/g.test(_default)) {
+                debug('type:', 'format:', _format);
+                result = _format;
+              }
+              // If interpolation failed for format
+              if (/\{[\s\S]*\}/g.test(_format)) {
+                debug('type:', 'default:', _default);
+                result = _default;
+              }
+              // If all fails then we tried so
+              // return the default since it could
+              // possibly be that _default and _format
+              // are the same.
+              if (_S2['default'](result).isEmpty()) {
+                return _default;
+              } else {
+                return result;
+              }
+            }
+            // If formatted string was empty, then it could be
             // in the default string else just return an empty
             // string.
-            if (!_S2['default'](_format).isEmpty()) {
-              debug('type:', 'format:', this.format());
+            else if (!_S2['default'](_format).isEmpty() && !_default) {
+              debug('type:', 'format:', _format);
               return _format;
-            } else if (!_S2['default'](_default).isEmpty()) {
-              debug('type:', 'default:', this['default']());
+            } else if (!_S2['default'](_default).isEmpty() && !_format) {
+              debug('type:', 'default:', _default);
               return _default;
             } else {
               return '';
