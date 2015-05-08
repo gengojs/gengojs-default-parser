@@ -2,6 +2,8 @@
 
 The default parser plugin for gengo.js.
 
+[![Build Status](https://travis-ci.org/iwatakeshi/gengojs-default-parser.svg?branch=master)](https://travis-ci.org/iwatakeshi/gengojs-default-parser)
+
 This module will be used for [gengo.js](https://github.com/iwatakeshi/gengojs).
 
 An example usage with options is:
