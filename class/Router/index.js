@@ -1,28 +1,28 @@
 'use strict';
 
-var _interopRequireWildcard = function (obj) { return obj && obj.__esModule ? obj : { 'default': obj }; };
-
-var _classCallCheck = function (instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError('Cannot call a class as a function'); } };
-
-var _createClass = (function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ('value' in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; })();
-
 Object.defineProperty(exports, '__esModule', {
   value: true
 });
 
-var _find = require('../Find');
+var _createClass = (function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ('value' in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; })();
 
-var _find2 = _interopRequireWildcard(_find);
+function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { 'default': obj }; }
 
-var _d = require('debug');
+function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError('Cannot call a class as a function'); } }
 
-var _d2 = _interopRequireWildcard(_d);
+var _Find = require('../Find');
 
-var _import = require('lodash');
+var _Find2 = _interopRequireDefault(_Find);
 
-var _import2 = _interopRequireWildcard(_import);
+var _debug = require('debug');
 
-var debug = _d2['default']('default-parser');
+var _debug2 = _interopRequireDefault(_debug);
+
+var _lodash = require('lodash');
+
+var _lodash2 = _interopRequireDefault(_lodash);
+
+var debug = _debug2['default']('default-parser');
 /* Router class */
 
 var Router = (function () {
@@ -33,7 +33,7 @@ var Router = (function () {
     this.router = _this.router;
     // Get the locale from either the keyword
     // or header
-    this.locale = _import2['default'].has(input.keywords, 'locale') ? _this.header.setLocale(input.keywords.locale) : _this.header.getLocale();
+    this.locale = _lodash2['default'].has(input.keywords, 'locale') ? _this.header.setLocale(input.keywords.locale) : _this.header.getLocale();
     this.data = _this.backend.find(this.locale);
     debug('data exists:', !!this.data);
   }
@@ -58,7 +58,7 @@ var Router = (function () {
         debug('router enabled:', this.isEnabled());
         //if dot depth is 0 else deep search for the data
         debug('router.toArray()', this.router.toArray());
-        if (this.router.toArray().length === 0) data = this.data[this.router.toDot()] || null;else data = _find2['default'](this.data).dot(this.router.toDot()) || null;
+        if (this.router.toArray().length === 0) data = this.data[this.router.toDot()] || null;else data = _Find2['default'](this.data).dot(this.router.toDot()) || null;
       }
       return data;
     }

@@ -1,49 +1,49 @@
 'use strict';
 
-var _interopRequireWildcard = function (obj) { return obj && obj.__esModule ? obj : { 'default': obj }; };
-
-var _classCallCheck = function (instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError('Cannot call a class as a function'); } };
-
-var _createClass = (function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ('value' in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; })();
-
 Object.defineProperty(exports, '__esModule', {
   value: true
 });
 
-var _find = require('../Find');
+var _createClass = (function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ('value' in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; })();
 
-var _find2 = _interopRequireWildcard(_find);
+function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { 'default': obj }; }
 
-var _sprintf = require('sprintf-js');
+function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError('Cannot call a class as a function'); } }
 
-var _sprintf2 = _interopRequireWildcard(_sprintf);
+var _Find = require('../Find');
 
-var _S = require('string');
+var _Find2 = _interopRequireDefault(_Find);
 
-var _S2 = _interopRequireWildcard(_S);
+var _sprintfJs = require('sprintf-js');
 
-var _MessageFormat = require('intl-messageformat');
+var _sprintfJs2 = _interopRequireDefault(_sprintfJs);
 
-var _MessageFormat2 = _interopRequireWildcard(_MessageFormat);
+var _string = require('string');
 
-var _Markdown = require('markdown-it');
+var _string2 = _interopRequireDefault(_string);
 
-var _Markdown2 = _interopRequireWildcard(_Markdown);
+var _intlMessageformat = require('intl-messageformat');
 
-var _type = require('../Type');
+var _intlMessageformat2 = _interopRequireDefault(_intlMessageformat);
 
-var _type2 = _interopRequireWildcard(_type);
+var _markdownIt = require('markdown-it');
 
-var _import = require('lodash');
+var _markdownIt2 = _interopRequireDefault(_markdownIt);
 
-var _import2 = _interopRequireWildcard(_import);
+var _Type = require('../Type');
 
-var _d = require('debug');
+var _Type2 = _interopRequireDefault(_Type);
 
-var _d2 = _interopRequireWildcard(_d);
+var _lodash = require('lodash');
 
-var vsprintf = _sprintf2['default'].vsprintf;
-var debug = _d2['default']('default-parser');
+var _lodash2 = _interopRequireDefault(_lodash);
+
+var _debug = require('debug');
+
+var _debug2 = _interopRequireDefault(_debug);
+
+var _vsprintf = _sprintfJs2['default'].vsprintf;
+var debug = _debug2['default']('default-parser');
 /* Engine class */
 
 var Engine = (function () {
@@ -56,7 +56,7 @@ var Engine = (function () {
     // Set options
     this.options = _this.options;
     // Get the input
-    this.input = _type2['default'](input, _this).input();
+    this.input = _Type2['default'](input, _this).input();
     // Find the phrase
     this.found = this.find(this.input.phrase);
   }
@@ -69,9 +69,7 @@ var Engine = (function () {
      * @return {String} The i18ned string.
      */
     value: function run() {
-      if (_import2['default'].isNull(this.input.phrase)) {
-        return '';
-      } else {
+      if (_lodash2['default'].isNull(this.input.phrase)) return '';else {
         var _format, _default;
         try {
           // Parse both at once
@@ -91,7 +89,7 @@ var Engine = (function () {
             // Render format
             return _format || '';
           case '*':
-            if (!_S2['default'](_format).isEmpty() && !_S2['default'](_default).isEmpty()) {
+            if (!_string2['default'](_format).isEmpty() && !_string2['default'](_default).isEmpty()) {
               var result = '';
               // If interpolation failed for default
               if (/\{[\s\S]*\}/g.test(_default)) {
@@ -107,24 +105,19 @@ var Engine = (function () {
               // return the default since it could
               // possibly be that _default and _format
               // are the same.
-              if (_S2['default'](result).isEmpty()) {
-                return _default;
-              } else {
-                return result;
-              }
+              if (_string2['default'](result).isEmpty()) return _default;else return result;
             }
             // If formatted string was empty, then it could be
             // in the default string else just return an empty
             // string.
-            else if (!_S2['default'](_format).isEmpty() && !_default) {
+            else if (!_string2['default'](_format).isEmpty() && !_default) {
               debug('type:', 'format:', _format);
               return _format;
-            } else if (!_S2['default'](_default).isEmpty() && !_format) {
+            } else if (!_string2['default'](_default).isEmpty() && !_format) {
               debug('type:', 'default:', _default);
               return _default;
-            } else {
-              return '';
-            }break;
+            } else return '';
+            break;
         }
       }
     }
@@ -147,13 +140,13 @@ var Engine = (function () {
       // Get the default parser if any
       var _default = overrides.engine['default'];
       // Allow users to override the default parser
-      if (_import2['default'].isFunction(_default)) phrase = _default.bind(this)(this.input);else try {
+      if (_lodash2['default'].isFunction(_default)) phrase = _default.bind(this)(this.input);else try {
         // Check if markdown is enabled
         if (markdown.enabled) phrase = this.markdown(phrase);
         // Apply interpolation
-        if (!_import2['default'].isEmpty(this.input.template) && template.enabled) phrase = this.template(phrase);
+        if (!_lodash2['default'].isEmpty(this.input.template) && template.enabled) phrase = this.template(phrase);
         // Apply vsprintf
-        if (!_import2['default'].isEmpty(this.input.arguments) && sprintf.enabled) phrase = this.vsprintf(phrase);
+        if (!_lodash2['default'].isEmpty(this.input.arguments) && sprintf.enabled) phrase = this.vsprintf(phrase);
       } catch (error) {
         debug(error.stack || String(error));
       }
@@ -177,7 +170,7 @@ var Engine = (function () {
       // Get the format parser if any
       var _format = overrides.engine.format;
       // Allow users to override the format parser
-      if (_import2['default'].isFunction(_format)) phrase = _format.bind()(this.input);else try {
+      if (_lodash2['default'].isFunction(_format)) phrase = _format.bind()(this.input);else try {
         if (markdown.enabled) phrase = this.markdown(phrase);
         result = this.messageFormat(phrase).format(this.input.template);
       } catch (error) {
@@ -206,19 +199,15 @@ var Engine = (function () {
       debug('process:', 'find:', 'key:', key);
       debug('process:', 'find:', 'object:', object);
       // Allow users to override the find function
-      if (_import2['default'].isFunction(_find)) {
-        return _find.bind(this)(object, key);
-      } else {
-        if (!object) {
-          return '';
-        } // If the object is already a string then return
-        if (_import2['default'].isString(object)) {
-          return object;
-        } // If it's an object
-        if (_import2['default'].isPlainObject(object)) {
+      if (_lodash2['default'].isFunction(_find)) return _find.bind(this)(object, key);else {
+        if (!object) return '';
+        // If the object is already a string then return
+        if (_lodash2['default'].isString(object)) return object;
+        // If it's an object
+        if (_lodash2['default'].isPlainObject(object)) {
           // Check if already contains the key 'default' or 'translated'
-          if (_import2['default'].has(object, key)) {
-            return _import2['default'].has(object, key) ? object[key] : object;
+          if (_lodash2['default'].has(object, key)) {
+            return _lodash2['default'].has(object, key) ? object[key] : object;
           }
         }
       }
@@ -230,7 +219,7 @@ var Engine = (function () {
     value: function messageFormat(str) {
       debug('process:', 'message formatting');
       str = this.find(str);
-      return !_S2['default'](str).isEmpty() || !str ? new _MessageFormat2['default'](str, this.locale) : '';
+      return !_string2['default'](str).isEmpty() || !str ? new _intlMessageformat2['default'](str, this.locale) : '';
     }
   }, {
     key: 'markdown',
@@ -238,26 +227,16 @@ var Engine = (function () {
     /* Markdown */
     value: function markdown(str) {
       debug('process:', 'markdown');
-      return new _Markdown2['default'](_import2['default'].omit(this.options.markdown, 'enabled')).renderInline(str);
+      return new _markdownIt2['default'](_lodash2['default'].omit(this.options.markdown, 'enabled')).renderInline(str);
     }
   }, {
     key: 'vsprintf',
 
     /* Sprintf */
-    value: (function (_vsprintf) {
-      function vsprintf(_x) {
-        return _vsprintf.apply(this, arguments);
-      }
-
-      vsprintf.toString = function () {
-        return _vsprintf.toString();
-      };
-
-      return vsprintf;
-    })(function (str) {
+    value: function vsprintf(str) {
       debug('process:', 'vsprintf');
-      return vsprintf(str, this.input.arguments);
-    })
+      return _vsprintf(str, this.input.arguments);
+    }
   }, {
     key: 'template',
 
@@ -269,7 +248,7 @@ var Engine = (function () {
 
       var open = parser.template.open,
           close = parser.template.close;
-      if (_S2['default'](phrase).include(open) && _S2['default'](phrase).include(close)) {
+      if (_string2['default'](phrase).include(open) && _string2['default'](phrase).include(close)) {
         var opening = open;
         var closing = close;
 
@@ -278,11 +257,11 @@ var Engine = (function () {
         var r = new RegExp(open + '(.+?)' + close, 'g');
         //, r = /\{\{(.+?)\}\}/g
         var matches = phrase.match(r) || [];
-        _import2['default'].forEach(matches, function (match) {
+        _lodash2['default'].forEach(matches, function (match) {
           var keys = match.substring(opening.length,
           // Chop {{ and }}
           match.length - closing.length).trim().split('.');
-          var value = _find2['default'](this.input.template).dot(keys);
+          var value = _Find2['default'](this.input.template).dot(keys);
           phrase = phrase.replace(match, value);
         }, this);
       }

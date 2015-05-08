@@ -1,24 +1,24 @@
 'use strict';
 
-var _interopRequireWildcard = function (obj) { return obj && obj.__esModule ? obj : { 'default': obj }; };
-
-var _classCallCheck = function (instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError('Cannot call a class as a function'); } };
-
-var _createClass = (function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ('value' in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; })();
-
 Object.defineProperty(exports, '__esModule', {
   value: true
 });
 
-var _import = require('lodash');
+var _createClass = (function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ('value' in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; })();
 
-var _import2 = _interopRequireWildcard(_import);
+function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { 'default': obj }; }
 
-var _d = require('debug');
+function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError('Cannot call a class as a function'); } }
 
-var _d2 = _interopRequireWildcard(_d);
+var _lodash = require('lodash');
 
-var debug = _d2['default']('default-parser');
+var _lodash2 = _interopRequireDefault(_lodash);
+
+var _debug = require('debug');
+
+var _debug2 = _interopRequireDefault(_debug);
+
+var debug = _debug2['default']('default-parser');
 /* Filter class */
 
 var Filter = (function () {
@@ -46,21 +46,21 @@ var Filter = (function () {
       var other = input.other;var args = other.args;
       var values = other.values;
 
-      if (_import2['default'].isPlainObject(phrase)) {
-        if (_import2['default'].has(phrase, 'phrase')) this._phrase = phrase.phrase;
-        if (_import2['default'].has(phrase, 'parser')) this._keywords.parser = phrase.parser;
+      if (_lodash2['default'].isPlainObject(phrase)) {
+        if (_lodash2['default'].has(phrase, 'phrase')) this._phrase = phrase.phrase;
+        if (_lodash2['default'].has(phrase, 'parser')) this._keywords.parser = phrase.parser;
       } else this._phrase = phrase;
 
-      if (!_import2['default'].isEmpty(args)) {
+      if (!_lodash2['default'].isEmpty(args)) {
         // Iterate the arguments
-        _import2['default'].forEach(args, function (item) {
+        _lodash2['default'].forEach(args, function (item) {
           // If the arguments contains an Object
           // then check for some keywords
-          if (_import2['default'].isPlainObject(item)) {
-            _import2['default'].forOwn(item, function (oitem, key) {
+          if (_lodash2['default'].isPlainObject(item)) {
+            _lodash2['default'].forOwn(item, function (oitem, key) {
               switch (key) {
                 case 'phrase':
-                  if (!_import2['default'].isEmpty(this._phrase)) this._phrase = item;
+                  if (!_lodash2['default'].isEmpty(this._phrase)) this._phrase = item;
                   break;
                 case 'parser':
                   if (!this._keywords.parser) this._keywords.parser = oitem;
@@ -74,14 +74,14 @@ var Filter = (function () {
               }
             }, this);
           }
-          if (!_import2['default'].isArray(item) && !_import2['default'].isPlainObject(item)) this._arguments.push(item);
+          if (!_lodash2['default'].isArray(item) && !_lodash2['default'].isPlainObject(item)) this._arguments.push(item);
         }, this);
       }
-      if (!_import2['default'].isEmpty(values)) {
-        _import2['default'].forOwn(values, function (item, key) {
+      if (!_lodash2['default'].isEmpty(values)) {
+        _lodash2['default'].forOwn(values, function (item, key) {
           switch (key) {
             case 'phrase':
-              if (!_import2['default'].isEmpty(this._phrase)) this._phrase = item;
+              if (!_lodash2['default'].isEmpty(this._phrase)) this._phrase = item;
               break;
             case 'parser':
               if (!this._keywords.parser) this._keywords.parser = item;
@@ -103,17 +103,7 @@ var Filter = (function () {
      * Returns the filtered input
      * @return {Object}
      */
-    value: (function (_input) {
-      function input() {
-        return _input.apply(this, arguments);
-      }
-
-      input.toString = function () {
-        return _input.toString();
-      };
-
-      return input;
-    })(function () {
+    value: function input() {
       var input = {
         phrase: this._phrase,
         arguments: this._arguments,
@@ -122,7 +112,7 @@ var Filter = (function () {
       };
       debug('filtered input:', input);
       return input;
-    })
+    }
   }]);
 
   return Filter;

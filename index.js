@@ -1,35 +1,35 @@
 'use strict';
 
-var _interopRequireWildcard = function (obj) { return obj && obj.__esModule ? obj : { 'default': obj }; };
-
-var _classCallCheck = function (instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError('Cannot call a class as a function'); } };
-
-var _createClass = (function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ('value' in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; })();
-
 Object.defineProperty(exports, '__esModule', {
   value: true
 });
 
-var _engine = require('./class/Engine');
+var _createClass = (function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ('value' in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; })();
 
-var _engine2 = _interopRequireWildcard(_engine);
+function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { 'default': obj }; }
 
-var _import = require('lodash');
+function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError('Cannot call a class as a function'); } }
 
-var _import2 = _interopRequireWildcard(_import);
+var _classEngine = require('./class/Engine');
 
-var _d = require('debug');
+var _classEngine2 = _interopRequireDefault(_classEngine);
 
-var _d2 = _interopRequireWildcard(_d);
+var _lodash = require('lodash');
 
-var debug = _d2['default']('default-parser');
+var _lodash2 = _interopRequireDefault(_lodash);
+
+var _debug = require('debug');
+
+var _debug2 = _interopRequireDefault(_debug);
+
+var debug = _debug2['default']('default-parser');
 
 var Parser = (function () {
   function Parser(input, _this) {
     _classCallCheck(this, Parser);
 
     debug('constructor:', 'Parser');
-    this.engine = _engine2['default'](input, _this);
+    this.engine = _classEngine2['default'](input, _this);
   }
 
   _createClass(Parser, [{
@@ -48,7 +48,7 @@ exports['default'] = function () {
     main: function main(input) {
       this.result = new Parser(input, this).parse();
     },
-    'package': _import2['default'].merge({
+    'package': _lodash2['default'].merge({
       type: 'parser'
     }, require('./package')),
     defaults: require('./defaults')
