@@ -1,8 +1,8 @@
 # gengojs-default-parser
 
-The default parser plugin for gengojs
+The default parser plugin for gengo.js.
 
-This module will be used for the upcoming [gengo.js](https://github.com/iwatakeshi/gengojs) **1.0.0**.
+This module will be used for [gengo.js](https://github.com/iwatakeshi/gengojs).
 
 An example usage with options is:
 
@@ -12,7 +12,7 @@ var gengo = require('gengojs');
 var parser = require('gengojs-default-parser');
 
 /* In whatever framework you are using: */
- 
+
 // I'll use express for an example
 // but it shouldn't matter
 
@@ -31,7 +31,7 @@ The default parser is already included in gengojs so you should not have to requ
 ## Options
 
 ```js
-{ 
+{
   // Specify the type of parser to use:
   // default, format, * (all)
   'type': 'default',
@@ -105,7 +105,7 @@ The default parser is already included in gengojs so you should not have to requ
 this.result;
 ```
 ## Dependencies
-	
+
 * `getLocale(locale:String)` from class `Header`
 * `setLocale(locale:String)` from class `Header`
 * `toDot()` from class `Router`
@@ -114,7 +114,7 @@ this.result;
 
 ## Overriding the Parser
 
-The default parser allows you to override many functions that 
+The default parser allows you to override many functions that
 make up the parser. The following are the functions that you
 can override:
 
@@ -133,7 +133,7 @@ can override:
   * This is the format parser for message formatting.
 * `find`
   * This searches the data for the translated or default key.
-  It is here where you can add your own logic to support 
+  It is here where you can add your own logic to support
   plurality.
 
 For examples, check out the [GitHub page](https://github.com/iwatakeshi/gengojs-default-parser/tree/master/lib/class).
@@ -141,7 +141,7 @@ For examples, check out the [GitHub page](https://github.com/iwatakeshi/gengojs-
 ## Selecting a Parser
 
 There are two types of parsers in gengojs-default-parser. The first is the default parser
-which handles Sprintf and Interpolation, and the second is format which handles 
+which handles Sprintf and Interpolation, and the second is format which handles
 [MessageFormat](https://github.com/yahoo/intl-messageformat).
 
 By default, the first is your primary parser and can be changed in the options. You may also specify the type to use
