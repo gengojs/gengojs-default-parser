@@ -18,13 +18,14 @@ var _debug = require('debug');
 
 var _debug2 = _interopRequireDefault(_debug);
 
-var debug = _debug2['default']('default-parser');
+var debug = (0, _debug2['default'])('default-parser');
 /* Filter class */
 
 var Filter = (function () {
   function Filter(input) {
     _classCallCheck(this, Filter);
 
+    debug('constructor:', 'Filter');
     this._phrase = '';
     this._arguments = [];
     this._keywords = {};

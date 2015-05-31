@@ -34,7 +34,7 @@ var _debug = require('debug');
 
 var _debug2 = _interopRequireDefault(_debug);
 
-var debug = _debug2['default']('default-parser');
+var debug = (0, _debug2['default'])('default-parser');
 /* Type class */
 
 var Type = (function () {
@@ -47,7 +47,7 @@ var Type = (function () {
     debug('input:', input);
     // Set dependencies
     this.header = _this.header;
-    this.router = _Router2['default'](input, _this);
+    this.router = (0, _Router2['default'])(input, _this);
     // Set options
     this.options = _this.options.parser;
     // Set filtered input
@@ -58,12 +58,12 @@ var Type = (function () {
       if (_lodash2['default'].isFunction(_filter)) return _filter(input, {
         debug: debug,
         '_': _lodash2['default']
-      });else return _Filter2['default'](input).input();
+      });else return (0, _Filter2['default'])(input).input();
     })();
     // Check if type of parser is specified
     if (!this.input().keywords.parser) this.input().keywords.parser = this.options.type;
     // Set regex result
-    this.regex = _Regex2['default'](this.input().phrase);
+    this.regex = (0, _Regex2['default'])(this.input().phrase);
     debug('locale:', _this.header.getLocale());
     // Parse
     this.parse();
@@ -178,9 +178,9 @@ var Type = (function () {
         // If the bracket contains a dot notation
         if (dot) {
           //match the dot.dot.dot
-          if (_Regex2['default'](dot).dot().match()) {
+          if ((0, _Regex2['default'])(dot).dot().match()) {
             //deep search for the data and parse the result
-            result = _Find2['default'](local).dot(dot) || _Find2['default'](global).dot(dot);
+            result = (0, _Find2['default'])(local).dot(dot) || (0, _Find2['default'])(global).dot(dot);
             //check if key exists
             result = _lodash2['default'].has(result, key) ? result[key] : result || null;
           } else result = local ? local[dot] : local || global ? global[dot] : global;
@@ -217,7 +217,7 @@ var Type = (function () {
         global = this.router.global(keywords.global);
 
         debug('global exists:', !!global, 'local exists:', !!local);
-        result = _Find2['default'](local).dot(key) || _Find2['default'](global).dot(key);
+        result = (0, _Find2['default'])(local).dot(key) || (0, _Find2['default'])(global).dot(key);
       } catch (error) {
         if (this.router.isEnabled()) debug('Woops! Couldn\'t find key: ' + this._type.key + ' with router enabled.');else debug(error.stack || String(error));
       }

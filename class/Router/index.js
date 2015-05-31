@@ -22,7 +22,7 @@ var _lodash = require('lodash');
 
 var _lodash2 = _interopRequireDefault(_lodash);
 
-var debug = _debug2['default']('default-parser');
+var debug = (0, _debug2['default'])('default-parser');
 /* Router class */
 
 var Router = (function () {
@@ -58,7 +58,7 @@ var Router = (function () {
         debug('router enabled:', this.isEnabled());
         //if dot depth is 0 else deep search for the data
         debug('router.toArray()', this.router.toArray());
-        if (this.router.toArray().length === 0) data = this.data[this.router.toDot()] || null;else data = _Find2['default'](this.data).dot(this.router.toDot()) || null;
+        if (this.router.toArray().length === 0) data = this.data[this.router.toDot()] || null;else data = (0, _Find2['default'])(this.data).dot(this.router.toDot()) || null;
       }
       return data;
     }

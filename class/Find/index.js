@@ -14,12 +14,18 @@ var _lodash = require('lodash');
 
 var _lodash2 = _interopRequireDefault(_lodash);
 
+var _debug = require('debug');
+
+var _debug2 = _interopRequireDefault(_debug);
+
+var debug = (0, _debug2['default'])('default-parser');
 /* Find class */
 
 var Find = (function () {
   function Find(object) {
     _classCallCheck(this, Find);
 
+    debug('constructor:', 'Find');
     this.object = object;
   }
 
@@ -45,8 +51,17 @@ var Find = (function () {
       }
     }
   }, {
-    key: 'template',
-    value: function template() {}
+    key: 'interpolate',
+
+    // http://bit.ly/1HWJu9o
+    value: function interpolate(obj, property) {
+      if (!obj) return '';
+      if (property.length === 0) return obj;
+
+      var found = obj[property[0]];
+      var remainder = property.slice(1);
+      return this.interpolate(found, remainder);
+    }
   }]);
 
   return Find;
@@ -58,17 +73,3 @@ exports['default'] = function (object) {
 };
 
 module.exports = exports['default'];
-
-/*Find.prototype.template = function(obj) {
-'use strict';
-this.obj = obj || this.obj;
-if (!obj) {
-return '';
-}
-if (property.length === 0) {
-return obj;
-}
-var found = obj[property[0]];
-var remainder = property.slice(1);
-return this.template(found, remainder);
-};*/

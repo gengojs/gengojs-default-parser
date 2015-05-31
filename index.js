@@ -22,14 +22,14 @@ var _debug = require('debug');
 
 var _debug2 = _interopRequireDefault(_debug);
 
-var debug = _debug2['default']('default-parser');
+var debug = (0, _debug2['default'])('default-parser');
 
 var Parser = (function () {
   function Parser(input, _this) {
     _classCallCheck(this, Parser);
 
     debug('constructor:', 'Parser');
-    this.engine = _classEngine2['default'](input, _this);
+    this.engine = (0, _classEngine2['default'])(input, _this);
   }
 
   _createClass(Parser, [{
