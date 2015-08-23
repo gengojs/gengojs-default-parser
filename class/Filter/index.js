@@ -33,14 +33,14 @@ var Filter = (function () {
     this.filter(input);
   }
 
+  /**
+   * Filters the input
+   * @param  {Object} input
+   * @return {Object}
+   */
+
   _createClass(Filter, [{
     key: 'filter',
-
-    /**
-     * Filters the input
-     * @param  {Object} input
-     * @return {Object}
-     */
     value: function filter(input) {
       debug('process:', 'filter');
       var phrase = input.phrase;
@@ -97,13 +97,13 @@ var Filter = (function () {
         }, this);
       }
     }
-  }, {
-    key: 'input',
 
     /**
      * Returns the filtered input
      * @return {Object}
      */
+  }, {
+    key: 'input',
     value: function input() {
       var input = {
         phrase: this._phrase,

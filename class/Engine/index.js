@@ -61,13 +61,13 @@ var Engine = (function () {
     this.found = this.find(this.input.phrase);
   }
 
+  /**
+   * Starts the engine and parses the input
+   * @return {String} The i18ned string.
+   */
+
   _createClass(Engine, [{
     key: 'run',
-
-    /**
-     * Starts the engine and parses the input
-     * @return {String} The i18ned string.
-     */
     value: function run() {
       debug('process:', 'run');
       if (_lodash2['default'].isNull(this.input.phrase)) return '';else {
@@ -112,23 +112,23 @@ var Engine = (function () {
             // in the default string else just return an empty
             // string.
             else if (!(0, _string2['default'])(_format).isEmpty() && !_default) {
-              debug('type:', 'format:', _format);
-              return _format;
-            } else if (!(0, _string2['default'])(_default).isEmpty() && !_format) {
-              debug('type:', 'default:', _default);
-              return _default;
-            } else return '';
+                debug('type:', 'format:', _format);
+                return _format;
+              } else if (!(0, _string2['default'])(_default).isEmpty() && !_format) {
+                debug('type:', 'default:', _default);
+                return _default;
+              } else return '';
             break;
         }
       }
     }
-  }, {
-    key: 'defaultParser',
 
     /**
      * The default parser
      * @return {String}
      */
+  }, {
+    key: 'defaultParser',
     value: function defaultParser(str) {
       debug('process:', 'default');
       var phrase = str || this.found;
@@ -153,13 +153,13 @@ var Engine = (function () {
       }
       return phrase || undefined;
     }
-  }, {
-    key: 'formatParser',
 
     /**
      * The message formatting parser
      * @return {String}
      */
+  }, {
+    key: 'formatParser',
     value: function formatParser(str) {
       debug('process:', 'format');
       var phrase = str || this.found,
@@ -182,14 +182,14 @@ var Engine = (function () {
       phrase = result;
       return phrase || undefined;
     }
-  }, {
-    key: 'find',
 
     /**
      * Finds the translated phrase in the dictionary
      * @param  {Object}
      * @return {String}
      */
+  }, {
+    key: 'find',
     value: function find(object) {
       debug('process:', 'find');
       var _options = this.options;
@@ -215,35 +215,35 @@ var Engine = (function () {
         }
       }
     }
-  }, {
-    key: 'messageFormat',
 
     /* Messageformat */
+  }, {
+    key: 'messageFormat',
     value: function messageFormat(str) {
       debug('process:', 'message formatting');
       str = this.find(str);
       return !(0, _string2['default'])(str).isEmpty() || !str ? new _intlMessageformat2['default'](str, this.locale) : '';
     }
-  }, {
-    key: 'markdown',
 
     /* Markdown */
+  }, {
+    key: 'markdown',
     value: function markdown(str) {
       debug('process:', 'markdown');
       return new _markdownIt2['default'](_lodash2['default'].omit(this.options.markdown, 'enabled')).renderInline(str);
     }
-  }, {
-    key: 'vsprintf',
 
     /* Sprintf */
+  }, {
+    key: 'vsprintf',
     value: function vsprintf(str) {
       debug('process:', 'vsprintf');
       return _vsprintf(str, this.input.arguments);
     }
-  }, {
-    key: 'template',
 
     /* Interpolation */
+  }, {
+    key: 'template',
     value: function template(str) {
       debug('process:', 'template');
       var phrase = str;

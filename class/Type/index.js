@@ -69,23 +69,23 @@ var Type = (function () {
     this.parse();
   }
 
+  /**
+   * Returns the filtered input
+   * @return {Object}
+   */
+
   _createClass(Type, [{
     key: 'input',
-
-    /**
-     * Returns the filtered input
-     * @return {Object}
-     */
     value: function input() {
       return this.filter;
     }
-  }, {
-    key: 'parse',
 
     /**
      * Finds the data containing result from the input
      * @return {String}
      */
+  }, {
+    key: 'parse',
     value: function parse() {
       debug('process:', 'type');
       debug('input:', this.input());
@@ -98,14 +98,14 @@ var Type = (function () {
         };
         // If the phrase contains dots
       else if (this.regex.dot().match()) this.type = {
-        key: this.input().phrase,
-        type: 'dot'
-      };
-      // If the phrase is just something ordinary
-      else this.type = {
-        key: this.input().phrase,
-        type: 'phrase'
-      };
+          key: this.input().phrase,
+          type: 'dot'
+        };
+        // If the phrase is just something ordinary
+        else this.type = {
+            key: this.input().phrase,
+            type: 'phrase'
+          };
       debug('process:', 'type:', this.type.type);
       switch (this.type.type) {
         case 'phrase':
@@ -119,13 +119,13 @@ var Type = (function () {
           break;
       }
     }
-  }, {
-    key: 'getPhrase',
 
     /**
      * Finds the data from a string that is a phrase
      * @return {String | Object | null}
      */
+  }, {
+    key: 'getPhrase',
     value: function getPhrase() {
       var keywords = this.options.keywords,
           result,
@@ -146,13 +146,13 @@ var Type = (function () {
       debug('result:', result);
       return result || null;
     }
-  }, {
-    key: 'getBracket',
 
     /**
      * Parses a string that contains a bracket notation
      * @return {String | null}
      */
+  }, {
+    key: 'getBracket',
     value: function getBracket() {
       debug('process:', 'getBracket');
       var keywords = this.options.keywords,
@@ -195,13 +195,13 @@ var Type = (function () {
       debug('result:', result);
       return result || null;
     }
-  }, {
-    key: 'getDot',
 
     /**
      * Parses a string that contains a dot notation
      * @return {String | null}
      */
+  }, {
+    key: 'getDot',
     value: function getDot() {
       debug('process:', 'getDot');
       var keywords = this.options.keywords,

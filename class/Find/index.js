@@ -50,10 +50,10 @@ var Find = (function () {
         }
       }
     }
-  }, {
-    key: 'interpolate',
 
     // http://bit.ly/1HWJu9o
+  }, {
+    key: 'interpolate',
     value: function interpolate(obj, property) {
       if (!obj) return '';
       if (property.length === 0) return obj;
