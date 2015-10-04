@@ -1,11 +1,9 @@
-import Find from './find';
-import d from 'debug';
 import _ from 'lodash';
-var debug = d('default-parser');
+
+import Find from './find';
 /* Router class */
 class Router {
   constructor(input, core) {
-    debug('constructor:', 'Router');
     this._router = core.router;
     this._header = core.header;
     this._backend = core.backend;
@@ -15,7 +13,6 @@ class Router {
       this._header.setLocale(input.keywords.locale) :
       this._header.getLocale();
     this._data = this._backend.find(this._locale);
-    debug('data exists:', !(!this._data));
   }
   isEnabled() {
     return this._router.isEnabled();
@@ -27,9 +24,7 @@ class Router {
   local() {
     //check if router is enabled
     if (this.isEnabled()) {
-      debug('router enabled:', this.isEnabled());
       //if dot depth is 0 else deep search for the data
-      debug('router.toArray()', this.router.toArray());
       if (this.router.toArray().length === 0)
         return (this._data[this.router.toDot()] || undefined);
       else return Find.find(this._data, this.router.toDot());

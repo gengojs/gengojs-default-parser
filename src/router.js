@@ -10,26 +10,20 @@ function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { 'd
 
 function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError('Cannot call a class as a function'); } }
 
-var _find = require('./find');
-
-var _find2 = _interopRequireDefault(_find);
-
-var _debug = require('debug');
-
-var _debug2 = _interopRequireDefault(_debug);
-
 var _lodash = require('lodash');
 
 var _lodash2 = _interopRequireDefault(_lodash);
 
-var debug = (0, _debug2['default'])('default-parser');
+var _find = require('./find');
+
+var _find2 = _interopRequireDefault(_find);
+
 /* Router class */
 
 var Router = (function () {
   function Router(input, core) {
     _classCallCheck(this, Router);
 
-    debug('constructor:', 'Router');
     this._router = core.router;
     this._header = core.header;
     this._backend = core.backend;
@@ -37,7 +31,6 @@ var Router = (function () {
     // or header
     this._locale = _lodash2['default'].has(input.keywords, 'locale') ? this._header.setLocale(input.keywords.locale) : this._header.getLocale();
     this._data = this._backend.find(this._locale);
-    debug('data exists:', !!this._data);
   }
 
   _createClass(Router, [{
@@ -55,9 +48,7 @@ var Router = (function () {
     value: function local() {
       //check if router is enabled
       if (this.isEnabled()) {
-        debug('router enabled:', this.isEnabled());
         //if dot depth is 0 else deep search for the data
-        debug('router.toArray()', this.router.toArray());
         if (this.router.toArray().length === 0) return this._data[this.router.toDot()] || undefined;else return _find2['default'].find(this._data, this.router.toDot());
       } else return undefined;
     }
