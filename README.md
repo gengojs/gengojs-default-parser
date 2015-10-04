@@ -2,9 +2,9 @@
 
 The default parser plugin for gengo.js.
 
-[![Build Status](https://travis-ci.org/iwatakeshi/gengojs-default-parser.svg?branch=master)](https://travis-ci.org/iwatakeshi/gengojs-default-parser)
+[![Build Status](https://travis-ci.org/gengojs/plugin-parser.svg?branch=master)](https://travis-ci.org/gengojs/plugin-parser)
 
-This module will be used for [gengo.js](https://github.com/iwatakeshi/gengojs).
+This module will be used for [gengo.js](https://github.com/gengojs/gengojs).
 
 An example usage with options is:
 
@@ -78,23 +78,8 @@ The default parser is already included in gengojs so you should not have to requ
     // Global key used in dictionary
   	// across views.
     'global': 'global'
-  },
-  // Overriding options
-  'overrides': {
-  	// Override the filter
-    'filter': null,
-    // Engine class functions
-    'engine': {
-      // Override the default
-      // parser function
-      'default': null,
-      // Override the format
-      // parser function
-      'format': null,
-      // Override the find function
-      'find': null
-    }
   }
+}
 ```
 ## Internal API
 
