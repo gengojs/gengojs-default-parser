@@ -1,23 +1,19 @@
 import _ from 'lodash';
-import d from 'debug';
-var debug = d('default-parser');
 /* Filter class */
 class Filter {
   constructor(input) {
-    debug('constructor:', 'Filter');
-    this._phrase = '';
-    this._arguments = [];
-    this._keywords = {};
-    this._templates = {};
-    this.filter(input);
-  }
-  /**
-   * Filters the input
-   * @param  {Object} input
-   * @return {Object}
-   */
-  filter(input) {
-    debug('process:', 'filter');
+      this._input = input;
+      this._phrase = '';
+      this._arguments = [];
+      this._keywords = {};
+      this._templates = {};
+    }
+    /**
+     * Filters the input
+     * @param  {Object} input
+     * @return {Object}
+     */
+  filter(input = this._input) {
     var {
       phrase, other
     } = input, {
@@ -73,25 +69,14 @@ class Filter {
         }
       }, this);
     }
-  }
-  /**
-   * Returns the filtered input
-   * @return {Object}
-   */
-  input() {
-    var input = {
+
+    return {
       phrase: this._phrase,
       arguments: this._arguments,
       template: this._templates,
       keywords: this._keywords
     };
-    debug('filtered input:', input);
-    return input;
   }
 }
 
-export
-default (input) => {
-  'use strict';
-  return new Filter(input);
-};
+export default Filter;

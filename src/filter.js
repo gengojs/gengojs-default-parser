@@ -14,23 +14,17 @@ var _lodash = require('lodash');
 
 var _lodash2 = _interopRequireDefault(_lodash);
 
-var _debug = require('debug');
-
-var _debug2 = _interopRequireDefault(_debug);
-
-var debug = (0, _debug2['default'])('default-parser');
 /* Filter class */
 
 var Filter = (function () {
   function Filter(input) {
     _classCallCheck(this, Filter);
 
-    debug('constructor:', 'Filter');
+    this._input = input;
     this._phrase = '';
     this._arguments = [];
     this._keywords = {};
     this._templates = {};
-    this.filter(input);
   }
 
   /**
@@ -41,8 +35,8 @@ var Filter = (function () {
 
   _createClass(Filter, [{
     key: 'filter',
-    value: function filter(input) {
-      debug('process:', 'filter');
+    value: function filter() {
+      var input = arguments.length <= 0 || arguments[0] === undefined ? this._input : arguments[0];
       var phrase = input.phrase;
       var other = input.other;var args = other.args;
       var values = other.values;
@@ -96,32 +90,19 @@ var Filter = (function () {
           }
         }, this);
       }
-    }
 
-    /**
-     * Returns the filtered input
-     * @return {Object}
-     */
-  }, {
-    key: 'input',
-    value: function input() {
-      var input = {
+      return {
         phrase: this._phrase,
         arguments: this._arguments,
         template: this._templates,
         keywords: this._keywords
       };
-      debug('filtered input:', input);
-      return input;
     }
   }]);
 
   return Filter;
 })();
 
-exports['default'] = function (input) {
-  'use strict';
-  return new Filter(input);
-};
-
+exports['default'] = Filter;
 module.exports = exports['default'];
+//# sourceMappingURL=source maps/filter.js.map

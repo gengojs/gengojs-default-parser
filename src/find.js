@@ -14,26 +14,19 @@ var _lodash = require('lodash');
 
 var _lodash2 = _interopRequireDefault(_lodash);
 
-var _debug = require('debug');
-
-var _debug2 = _interopRequireDefault(_debug);
-
-var debug = (0, _debug2['default'])('default-parser');
 /* Find class */
 
 var Find = (function () {
   function Find(object) {
     _classCallCheck(this, Find);
 
-    debug('constructor:', 'Find');
     this.object = object;
   }
 
-  _createClass(Find, [{
-    key: 'dot',
-    value: function dot(path) {
-      var obj = this.object;
-      if (!obj || _lodash2['default'].isNull(obj) || _lodash2['default'].isNull(path) || !path) return null;else {
+  _createClass(Find, null, [{
+    key: 'find',
+    value: function find(obj, path) {
+      if (!obj || !path) return undefined;else {
         var i, keys;
         if (path.indexOf('.') !== -1) {
           keys = path.split('.');
@@ -42,7 +35,7 @@ var Find = (function () {
             if (obj) if (_lodash2['default'].has(obj, keys[i])) {
               if (i === keys.length - 1) return obj[keys[i]];else obj = obj[keys[i]];
               //error or could be global
-            } else return null;else return null;
+            } else return undefined;else return null;
           }
           return obj;
         } else {
@@ -53,23 +46,20 @@ var Find = (function () {
 
     // http://bit.ly/1HWJu9o
   }, {
-    key: 'interpolate',
-    value: function interpolate(obj, property) {
+    key: 'findR',
+    value: function findR(obj, property) {
       if (!obj) return '';
       if (property.length === 0) return obj;
 
       var found = obj[property[0]];
       var remainder = property.slice(1);
-      return this.interpolate(found, remainder);
+      return Find.findR(found, remainder);
     }
   }]);
 
   return Find;
 })();
 
-exports['default'] = function (object) {
-  'use strict';
-  return new Find(object);
-};
-
+exports['default'] = Find;
 module.exports = exports['default'];
+//# sourceMappingURL=source maps/find.js.map
