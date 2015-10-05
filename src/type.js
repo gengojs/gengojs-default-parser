@@ -45,10 +45,11 @@ var Type = (function (_Notation) {
     _classCallCheck(this, Type);
 
     _get(Object.getPrototypeOf(Type.prototype), 'constructor', this).call(this, input.phrase);
+    log.debug('class: ' + Type.name, 'process: constructor').debug('router exists: ' +
     // Set dependencies
-    this._router = new _router2['default'](input, core);
+    !!(this._router = new _router2['default'](input, core))).debug('options exists: ' +
     // Set options
-    this._options = core.options.parser;
+    !!(this._options = core.options.parser)).info('options: ', this._options);
   }
 
   /**
