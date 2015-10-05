@@ -72,15 +72,16 @@ var Parser = (function (_Filter) {
     this.options = core.options;
 
     var result = new _type2['default'](this.input, core);
+    console.log('result', result);
     switch (result.parse().type) {
       case 'phrase':
-        this.input.phrase = result.getPhrase();
+        this.input.phrase = this.preparse(result.getPhrase());
         break;
       case 'bracket':
-        this.input.phrase = result.getBracket();
+        this.input.phrase = this.preparse(result.getBracket());
         break;
       case 'dot':
-        this.input.phrase = result.getDot();
+        this.input.phrase = this.preparse(result.getDot());
         break;
       default:
         break;
@@ -149,7 +150,7 @@ var Parser = (function (_Filter) {
   }, {
     key: 'defaultParser',
     value: function defaultParser(str) {
-      var phrase = str || this.phrase;
+      var phrase = str || this.input.phrase;
       var _options$parser = this.options.parser;
       var markdown = _options$parser.markdown;
       var template = _options$parser.template;
@@ -175,7 +176,7 @@ var Parser = (function (_Filter) {
   }, {
     key: 'formatParser',
     value: function formatParser(str) {
-      var phrase = str || this.phrase,
+      var phrase = str || this.input.phrase,
           result;
       var markdown = this.options.parser.markdown;
 
