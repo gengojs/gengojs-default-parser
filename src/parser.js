@@ -71,16 +71,16 @@ var Parser = (function (_Filter) {
     // Set options
     this.options = core.options;
 
-    var resultType = new _type2['default'](this.input, core);
-    switch (resultType.getType().type) {
+    var result = new _type2['default'](this.input, core);
+    switch (result.parse().type) {
       case 'phrase':
-        this.input.phrase = resultType.getPhrase();
+        this.input.phrase = result.getPhrase();
         break;
       case 'bracket':
-        this.input.phrase = resultType.getBracket();
+        this.input.phrase = result.getBracket();
         break;
       case 'dot':
-        this.input.phrase = resultType.getDot();
+        this.input.phrase = result.getDot();
         break;
       default:
         break;
