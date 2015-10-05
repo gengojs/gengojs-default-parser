@@ -14,9 +14,15 @@ var _lodash = require('lodash');
 
 var _lodash2 = _interopRequireDefault(_lodash);
 
+var _gengojsDebug = require('gengojs-debug');
+
+var _gengojsDebug2 = _interopRequireDefault(_gengojsDebug);
+
 var _find = require('./find');
 
 var _find2 = _interopRequireDefault(_find);
+
+var log = (0, _gengojsDebug2['default'])('parser');
 
 /* Router class */
 
@@ -27,9 +33,12 @@ var Router = (function () {
     this._router = core.router;
     this._header = core.header;
     this._backend = core.backend;
+
+    log.debug('class: ' + Router.name, 'process: constructor').debug('router exists:', !!this._router).debug('header exists:', !!this._header).debug('header exists:', !!this._backend).debug(
     // Get the locale from either the keyword
     // or header
-    this._locale = _lodash2['default'].has(input.keywords, 'locale') ? this._header.setLocale(input.keywords.locale) : this._header.getLocale();
+    'locale:', this._locale = _lodash2['default'].has(input.keywords, 'locale') ? this._header.setLocale(input.keywords.locale) : this._header.getLocale());
+
     this._data = this._backend.find(this._locale);
   }
 
