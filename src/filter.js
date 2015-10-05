@@ -37,10 +37,10 @@ var Filter = (function () {
     key: 'filter',
     value: function filter() {
       var input = arguments.length <= 0 || arguments[0] === undefined ? this._input : arguments[0];
-      var phrase = input.phrase;
-      var other = input.other;var args = other.args;
-      var values = other.values;
 
+      var phrase = input.phrase(),
+          args = input.arguments(),
+          values = input.values();
       if (_lodash2['default'].isPlainObject(phrase)) {
         if (_lodash2['default'].has(phrase, 'phrase')) this._phrase = phrase.phrase;
         if (_lodash2['default'].has(phrase, 'parser')) this._keywords.parser = phrase.parser;
