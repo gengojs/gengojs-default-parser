@@ -18,7 +18,7 @@ exports['default'] = function () {
   'use strict';
   return {
     main: function main(input) {
-      this.result = new _parser2['default'](input, this).parse();
+      return new _parser2['default'](input, this).parse();
     },
     'package': _lodash2['default'].merge({
       type: 'parser'
