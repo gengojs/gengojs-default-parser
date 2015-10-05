@@ -70,7 +70,7 @@ var Parser = (function (_Filter) {
      * 3. Use Type class to determine the input type
      */
     this.input = _get(Object.getPrototypeOf(Parser.prototype), 'filter', this).call(this);
-    var resultType = new _type2['default'](this.input.phrase, core);
+    var resultType = new _type2['default'](this.input, core);
     switch (resultType.getType().type) {
       case 'phrase':
         this.input.phrase = resultType.getPhrase();

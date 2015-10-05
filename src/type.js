@@ -44,7 +44,7 @@ var Type = (function (_Notation) {
   function Type(input, core) {
     _classCallCheck(this, Type);
 
-    _get(Object.getPrototypeOf(Type.prototype), 'constructor', this).call(this, input.key);
+    _get(Object.getPrototypeOf(Type.prototype), 'constructor', this).call(this, input.phrase);
     // Set dependencies
     this._router = new _router2['default'](input, core);
     // Set options
