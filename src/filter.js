@@ -47,9 +47,9 @@ var Filter = (function () {
       } else this._phrase = phrase;
 
       if (!_lodash2['default'].isEmpty(args)) {
+        console.log(args);
         // Iterate the arguments
         _lodash2['default'].forEach(args, function (item) {
-          console.log(item, typeof item);
           // If the arguments contains an Object
           // then check for some keywords
           if (_lodash2['default'].isPlainObject(item)) {
