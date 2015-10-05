@@ -60,7 +60,7 @@ var Type = (function (_Notation) {
   _createClass(Type, [{
     key: 'getPhrase',
     value: function getPhrase() {
-      var keywords = this.options.keywords,
+      var keywords = this._options.keywords,
           result,
           local,
           global,
@@ -85,7 +85,7 @@ var Type = (function (_Notation) {
   }, {
     key: 'getBracket',
     value: function getBracket() {
-      var keywords = this.options.keywords,
+      var keywords = this._options.keywords,
           key = _get(Object.getPrototypeOf(Type.prototype), 'parse', this).call(this).key,
           seek = _get(Object.getPrototypeOf(Type.prototype), 'parse', this).call(this).seek,
           result,
@@ -129,7 +129,7 @@ var Type = (function (_Notation) {
   }, {
     key: 'getDot',
     value: function getDot() {
-      var keywords = this.options.keywords,
+      var keywords = this._options.keywords,
           key = _get(Object.getPrototypeOf(Type.prototype), 'parse', this).call(this).key,
           result,
           local,
