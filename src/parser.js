@@ -60,16 +60,17 @@ var Parser = (function (_Filter) {
     _classCallCheck(this, Parser);
 
     _get(Object.getPrototypeOf(Parser.prototype), 'constructor', this).call(this, input);
-    // Set locale
-    this.locale = core.header.getLocale();
-    // Set options
-    this.options = core.options;
     /**
      * 1. Parser recieves a string as an input.
      * 2. The super class will filter the input.
      * 3. Use Type class to determine the input type
      */
-    this.input = _get(Object.getPrototypeOf(Parser.prototype), 'filter', this).call(this);
+    log.debug('class: ' + Parser.name, 'process: constructor').debug(this.input = _get(Object.getPrototypeOf(Parser.prototype), 'filter', this).call(this));
+    // Set locale
+    this.locale = core.header.getLocale();
+    // Set options
+    this.options = core.options;
+
     var resultType = new _type2['default'](this.input, core);
     switch (resultType.getType().type) {
       case 'phrase':
