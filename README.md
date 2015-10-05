@@ -83,47 +83,15 @@ The default parser is already included in gengojs so you should not have to requ
 ```
 ## Internal API
 
-`result` returns the i18ned string.
+Not Applicable
 
-**Example**:
-
-```js
-// Context
-this.result;
-```
 ## Dependencies
 
-* `getLocale(locale:String)` from class `Header`
-* `setLocale(locale:String)` from class `Header`
-* `toDot()` from class `Router`
-* `toArray()` from class `Router`
-* `isEnabled()` from class `Router`
-
-## Overriding the Parser
-
-The default parser allows you to override many functions that
-make up the parser. The following are the functions that you
-can override:
-
-* `filter`
-  * This filters the input by separating the arguments
-  into arrays and objects such as `keywords`, `templates`, and
-  `arguments`. Keywords are for dictionary and templates are for
-  interpolation. Arguments are for Sprintf. Since the parser does
-  not support the pluralization for the default parser, it instead
-  allows you to override the filter to your liking (ie. adding plural
-  as keyword).
-* `default`
-  * This is the default parser that manages interpolation
-  and sprintf.
-* `format`
-  * This is the format parser for message formatting.
-* `find`
-  * This searches the data for the translated or default key.
-  It is here where you can add your own logic to support
-  plurality.
-
-For examples, check out the [GitHub page](https://github.com/iwatakeshi/gengojs-default-parser/tree/master/lib/class).
+* `getLocale(locale:String)` from `Header`
+* `setLocale(locale:String)` from `Header`
+* `toDot()` from `Router`
+* `toArray()` from `Router`
+* `isEnabled()` from `Router`
 
 ## Selecting a Parser
 
