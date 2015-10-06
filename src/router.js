@@ -45,6 +45,7 @@ var Router = (function () {
   _createClass(Router, [{
     key: 'isEnabled',
     value: function isEnabled() {
+      log.debug('class: ' + Router.name, 'process: isEnabled').debug('isEnabled: ', this._router.isEnabled());
       return this._router.isEnabled();
     }
   }, {

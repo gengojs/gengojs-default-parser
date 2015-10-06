@@ -85,8 +85,6 @@ var Parser = (function (_Filter) {
         this.input.phrase = this.preparse(result.getDot());
         log.debug('type', 'dot').debug('phrase :', this.input.phrase);
         break;
-      default:
-        break;
     }
   }
 
@@ -108,9 +106,13 @@ var Parser = (function (_Filter) {
         } catch (error) {
           log.error(error.stack || String(error));
         }
-        log.info('selected parser: ', this.input.keywords.parser);
+        log.info('selected parser: ', this.input.keywords.parser || this.options.parser.type);
         // Determine if the user specified a parser
         switch (this.input.keywords.parser || this.options.parser.type) {
+          case 'default':
+            log.info('parse result - default:', _default);
+            // Render default
+            return _default || '';
           case 'format':
             log.info('parse result - format:', _format);
             // Render format
@@ -145,10 +147,6 @@ var Parser = (function (_Filter) {
                 return _default;
               } else return '';
             break;
-          default:
-            log.info('parse result - default:', _default);
-            // Render default
-            return _default || '';
         }
       }
     }
@@ -257,6 +255,8 @@ var Parser = (function (_Filter) {
   }, {
     key: 'template',
     value: function template(str) {
+      var _this = this;
+
       var phrase = str;
       var parser = this.options.parser;
 
@@ -277,9 +277,9 @@ var Parser = (function (_Filter) {
           var keys = match.substring(opening.length,
           // Chop {{ and }}
           match.length - closing.length).trim().split('.');
-          var value = _find2['default'].findR(this.input.template, keys);
+          var value = _find2['default'].findR(_this.input.template, keys);
           phrase = phrase.replace(match, value);
-        }, this);
+        });
       }
       return phrase;
     }
