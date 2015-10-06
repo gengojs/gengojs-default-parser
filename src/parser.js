@@ -111,9 +111,11 @@ var Parser = (function (_Filter) {
         // Determine if the user specified a parser
         switch (this.input.keywords.parser) {
           case 'default':
+            log.debug('result - default:', _default);
             // Render default
             return _default || '';
           case 'format':
+            log.debug('result - format:', _format);
             // Render format
             return _format || '';
           case '*':
