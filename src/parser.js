@@ -110,11 +110,7 @@ var Parser = (function (_Filter) {
         }
         log.info('selected parser: ', this.input.keywords.parser);
         // Determine if the user specified a parser
-        switch (this.input.keywords.parser) {
-          case 'default':
-            log.info('parse result - default:', _default);
-            // Render default
-            return _default || '';
+        switch (this.input.keywords.parser || this.options.parser.type) {
           case 'format':
             log.info('parse result - format:', _format);
             // Render format
@@ -149,6 +145,10 @@ var Parser = (function (_Filter) {
                 return _default;
               } else return '';
             break;
+          default:
+            log.info('parse result - default:', _default);
+            // Render default
+            return _default || '';
         }
       }
     }
