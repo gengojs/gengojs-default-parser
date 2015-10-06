@@ -15,7 +15,7 @@ See [documentation](https://gengojs.github.io/plugin-parser)
 
 An example usage with options is:
 
-```js
+```javascript
 
 var gengo = require('gengojs');
 var parser = require('gengojs-default-parser');
@@ -39,7 +39,7 @@ The default parser is already included in gengojs so you should not have to requ
 
 ## Options
 
-```js
+```javascript
 {
   // Specify the type of parser to use:
   // default, format, * (all)
@@ -109,7 +109,7 @@ which manages Sprintf and Interpolation, and the latter is `format` which manage
 By default, the former is your primary parser and can be changed in the options. You may also specify the type to use
 when you use the [API](https://github.com/iwatakeshi/gengojs-default-api). To do so, see the following example:
 
-```js
+```javascript
 // Using default parser:
 __('Hello', {parser:'default'});
 // Using format parser:
