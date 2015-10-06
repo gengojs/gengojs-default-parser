@@ -65,7 +65,7 @@ var Parser = (function (_Filter) {
      * 2. The super class will filter the input.
      * 3. Use Type class to determine the input type
      */
-    log.debug('class: ' + Parser.name, 'process: constructor').debug(this.input = _get(Object.getPrototypeOf(Parser.prototype), 'filter', this).call(this));
+    log.debug('class: ' + Parser.name, 'process: constructor').debug('filtered input:', this.input = _get(Object.getPrototypeOf(Parser.prototype), 'filter', this).call(this));
     // Set locale
     this.locale = core.header.getLocale();
     // Set options
@@ -168,7 +168,7 @@ var Parser = (function (_Filter) {
       } catch (error) {
         log.error(error.stack || String(error));
       }
-      return phrase || undefined;
+      return phrase;
     }
 
     /**
@@ -191,7 +191,7 @@ var Parser = (function (_Filter) {
         log.error(error.stack || String(error));
       }
       phrase = result;
-      return phrase || undefined;
+      return phrase;
     }
 
     /**

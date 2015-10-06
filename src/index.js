@@ -18,7 +18,13 @@ exports['default'] = function () {
   'use strict';
   return {
     main: function main(input) {
-      return new _parser2['default'](input, this).parse();
+      var _this = this;
+
+      return (function () {
+        var result = new _parser2['default'](input, _this).parse();
+        console.log('RESULT', result);
+        return result;
+      })();
     },
     'package': _lodash2['default'].merge({
       type: 'parser'
