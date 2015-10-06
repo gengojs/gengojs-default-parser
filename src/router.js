@@ -64,13 +64,13 @@ var Router = (function () {
       //check if router is enabled
       if (this.isEnabled()) {
         //if dot depth is 0 else deep search for the data
-        if (this.router.toArray().length === 0) {
+        if (this._router.toArray().length === 0) {
 
-          result = this._data[this.router.toDot()];
+          result = this._data[this._router.toDot()];
           log.info('local result: ', result);
           return result;
         } else {
-          result = _find2['default'].find(this._data, this.router.toDot());
+          result = _find2['default'].find(this._data, this._router.toDot());
           log.info('local result: ', result);
           return result;
         }
