@@ -99,7 +99,7 @@ var Parser = (function (_Filter) {
     key: 'parse',
     value: function parse() {
       log.debug('class: ' + Parser.name, 'process: parse').info('parsing phrase:', this.input.phrase);
-      if (!this.input.phrase) return '';else {
+      if (_lodash2['default'].isUndefined(this.input.phrase)) return '';else {
         var _format, _default;
         try {
           // Parse both at once
