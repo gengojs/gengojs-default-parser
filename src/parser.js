@@ -129,6 +129,7 @@ var Parser = (function (_Filter) {
               if (/\{[\s\S]*\}/g.test(_format)) {
                 result = _default;
               }
+              log.debug('result:', result);
               // If all fails then we tried so
               // return the default since it could
               // possibly be that _default and _format
@@ -139,8 +140,10 @@ var Parser = (function (_Filter) {
             // in the default string else just return an empty
             // string.
             else if (!(0, _string2['default'])(_format).isEmpty() && !_default) {
+                log.debug('result - format:', _format);
                 return _format;
               } else if (!(0, _string2['default'])(_default).isEmpty() && !_format) {
+                log.debug('result - default:', _default);
                 return _default;
               } else return '';
             break;
