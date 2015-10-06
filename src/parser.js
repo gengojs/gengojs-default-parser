@@ -72,7 +72,6 @@ var Parser = (function (_Filter) {
     this.options = core.options;
 
     var result = new _type2['default'](this.input, core);
-    console.log('result', result);
     switch (result.parse().type) {
       case 'phrase':
         this.input.phrase = this.preparse(result.getPhrase());
