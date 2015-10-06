@@ -25,6 +25,8 @@
     "gulp-shell": "^0.4.3",
     "gulp-sourcemaps": "^1.6.0",
     "jshint-stylish": "^2.0.1",
+    "mr-doc": "git+https://github.com/mr-doc/mr-doc.git",
+    "mr-doc-theme-cayman": "^1.0.3",
     "rimraf": "^2.4.3"
   },
   "scripts": {

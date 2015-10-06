@@ -6,6 +6,13 @@ The default parser plugin for gengo.js.
 
 This module will be used for [gengo.js](https://github.com/gengojs/gengojs).
 
+
+## Documentation
+
+See [documentation](https://gengojs.github.io/plugin-parser)
+
+## Usage
+
 An example usage with options is:
 
 ```js
