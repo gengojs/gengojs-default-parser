@@ -32,13 +32,13 @@
   },
   "repository": {
     "type": "git",
-    "url": "https://github.com/iwatakeshi/gengojs-default-parser.git"
+    "url": "https://github.com/gengojs/plugin-parser.git"
   },
   "author": {
     "name": "iwatakeshi"
   },
   "license": "MIT",
   "bugs": {
-    "url": "https://github.com/iwatakeshi/gengojs-default-parser/issues"
+    "url": "https://github.com/gengojs/plugin-parser/issues"
   }
 }
