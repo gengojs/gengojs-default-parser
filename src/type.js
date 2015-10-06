@@ -49,7 +49,7 @@ var Type = (function (_Notation) {
     // Set dependencies
     !!(this._router = new _router2['default'](input, core))).debug('options exists: ' +
     // Set options
-    !!(this._options = core.options.parser)).info('options: ', this._options);
+    !!(this._options = core.options.parser));
   }
 
   /**
