@@ -95,11 +95,11 @@ Not Applicable
 
 ## Selecting a Parser
 
-There are two types of parsers in gengojs-default-parser. The first is the `default` parser
-which handles Sprintf and Interpolation, and the second is `format` which handles
+There are two types of parsers in gengojs-default-parser. The former is the `default` parser
+which manages Sprintf and Interpolation, and the latter is `format` which manages
 [MessageFormat](https://github.com/yahoo/intl-messageformat).
 
-By default, the first is your primary parser and can be changed in the options. You may also specify the type to use
+By default, the former is your primary parser and can be changed in the options. You may also specify the type to use
 when you use the [API](https://github.com/iwatakeshi/gengojs-default-api). To do so, see the following example:
 
 ```js
@@ -114,10 +114,10 @@ __('You have {n, plural, =0 {no photos.}=1 {one photo.}other {# photos.}}', {par
 Unix:
 
 ```bash
-DEBUG=default-parser
+DEBUG=gengo.parser:*
 ```
 Windows:
 
 ```bash
-SET DEBUG=default-parser
+SET DEBUG=gengo.parser:*
 ```
