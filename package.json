@@ -36,6 +36,7 @@
     "type": "git",
     "url": "https://github.com/gengojs/plugin-parser.git"
   },
+  "homepage": "https://github.com/gengojs/plugin-parser",
   "author": {
     "name": "iwatakeshi"
   },
