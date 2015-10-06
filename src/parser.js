@@ -98,6 +98,7 @@ var Parser = (function (_Filter) {
   _createClass(Parser, [{
     key: 'parse',
     value: function parse() {
+      log.debug('class: ' + Parser.name, 'process: parse');
       if (!this.input.phrase) return '';else {
         var _format, _default;
         try {
@@ -152,6 +153,7 @@ var Parser = (function (_Filter) {
   }, {
     key: 'defaultParser',
     value: function defaultParser(str) {
+      log.debug('class: ' + Parser.name, 'process: defaultParser');
       var phrase = str || this.input.phrase;
       var _options$parser = this.options.parser;
       var markdown = _options$parser.markdown;
@@ -168,6 +170,7 @@ var Parser = (function (_Filter) {
       } catch (error) {
         log.error(error.stack || String(error));
       }
+      log.debug('result:', phrase);
       return phrase;
     }
 
@@ -178,6 +181,7 @@ var Parser = (function (_Filter) {
   }, {
     key: 'formatParser',
     value: function formatParser(str) {
+      log.debug('class: ' + Parser.name, 'process: formatParser');
       var phrase = str || this.input.phrase,
           result;
       var markdown = this.options.parser.markdown;
@@ -191,6 +195,7 @@ var Parser = (function (_Filter) {
         log.error(error.stack || String(error));
       }
       phrase = result;
+      log.debug('result:', phrase);
       return phrase;
     }
 
