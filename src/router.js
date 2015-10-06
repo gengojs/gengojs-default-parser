@@ -65,7 +65,6 @@ var Router = (function () {
       if (this.isEnabled()) {
         //if dot depth is 0 else deep search for the data
         if (this._router.toArray().length === 0) {
-
           result = this._data[this._router.toDot()];
           log.info('local result: ', result);
           return result;
