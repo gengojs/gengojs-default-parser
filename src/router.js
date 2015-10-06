@@ -51,15 +51,29 @@ var Router = (function () {
   }, {
     key: 'global',
     value: function global(keyword) {
-      return this.isEnabled() && keyword ? this._data[keyword] || undefined : this._data;
+      log.debug('class: ' + Router.name, 'process: global');
+      var result = this.isEnabled() && keyword ? this._data[keyword] : this._data;
+      log.info('global result: ', result);
+      return result;
     }
   }, {
     key: 'local',
     value: function local() {
+      log.debug('class: ' + Router.name, 'process: local');
+      var result;
       //check if router is enabled
       if (this.isEnabled()) {
         //if dot depth is 0 else deep search for the data
-        if (this.router.toArray().length === 0) return this._data[this.router.toDot()] || undefined;else return _find2['default'].find(this._data, this.router.toDot());
+        if (this.router.toArray().length === 0) {
+
+          result = this._data[this.router.toDot()];
+          log.info('local result: ', result);
+          return result;
+        } else {
+          result = _find2['default'].find(this._data, this.router.toDot());
+          log.info('local result: ', result);
+          return result;
+        }
       } else return undefined;
     }
   }]);
