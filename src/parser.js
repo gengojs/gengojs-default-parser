@@ -108,6 +108,7 @@ var Parser = (function (_Filter) {
         } catch (error) {
           log.error(error.stack || String(error));
         }
+        log.info('selected parser: ', this.input.keywords.parser);
         // Determine if the user specified a parser
         switch (this.input.keywords.parser) {
           case 'default':
