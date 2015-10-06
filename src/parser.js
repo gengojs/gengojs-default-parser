@@ -76,12 +76,15 @@ var Parser = (function (_Filter) {
     switch (result.parse().type) {
       case 'phrase':
         this.input.phrase = this.preparse(result.getPhrase());
+        log.debug('type', 'phrase').debug('phrase :', this.input.phrase);
         break;
       case 'bracket':
         this.input.phrase = this.preparse(result.getBracket());
+        log.debug('type', 'bracket').debug('phrase :', this.input.phrase);
         break;
       case 'dot':
         this.input.phrase = this.preparse(result.getDot());
+        log.debug('type', 'dot').debug('phrase :', this.input.phrase);
         break;
       default:
         break;

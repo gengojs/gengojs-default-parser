@@ -35,7 +35,7 @@ var Find = (function () {
             if (obj) if (_lodash2['default'].has(obj, keys[i])) {
               if (i === keys.length - 1) return obj[keys[i]];else obj = obj[keys[i]];
               //error or could be global
-            } else return undefined;else return null;
+            } else return undefined;else return undefined;
           }
           return obj;
         } else {
