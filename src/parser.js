@@ -98,7 +98,7 @@ var Parser = (function (_Filter) {
   _createClass(Parser, [{
     key: 'parse',
     value: function parse() {
-      log.debug('class: ' + Parser.name, 'process: parse');
+      log.debug('class: ' + Parser.name, 'process: parse').info('parsing phrase:', this.input.phrase);
       if (!this.input.phrase) return '';else {
         var _format, _default;
         try {
@@ -111,11 +111,11 @@ var Parser = (function (_Filter) {
         // Determine if the user specified a parser
         switch (this.input.keywords.parser) {
           case 'default':
-            log.debug('result - default:', _default);
+            log.info('parse result - default:', _default);
             // Render default
             return _default || '';
           case 'format':
-            log.debug('result - format:', _format);
+            log.info('parse result - format:', _format);
             // Render format
             return _format || '';
           case '*':
@@ -129,21 +129,22 @@ var Parser = (function (_Filter) {
               if (/\{[\s\S]*\}/g.test(_format)) {
                 result = _default;
               }
-              log.debug('result:', result);
               // If all fails then we tried so
               // return the default since it could
               // possibly be that _default and _format
               // are the same.
-              if ((0, _string2['default'])(result).isEmpty()) return _default;else return result;
+              if ((0, _string2['default'])(result).isEmpty()) result = _default;
+              log.info('parse result:', result);
+              return result;
             }
             // If formatted string was empty, then it could be
             // in the default string else just return an empty
             // string.
             else if (!(0, _string2['default'])(_format).isEmpty() && !_default) {
-                log.debug('result - format:', _format);
+                log.info('parse result - format:', _format);
                 return _format;
               } else if (!(0, _string2['default'])(_default).isEmpty() && !_format) {
-                log.debug('result - default:', _default);
+                log.info('parse result - default:', _default);
                 return _default;
               } else return '';
             break;
