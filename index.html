@@ -13,7 +13,7 @@
   <body>
     <section class="page-header">
       <h1 class="project-name">gengo.js/core</h1>
-      <h2 class="project-tagline">The default parser plugin for gengojs.</h2><a href="https://npmjs.com/package/gengojs-default-parser" target="_blank" class="btn">View on npm</a>
+      <h2 class="project-tagline">The default parser plugin for gengojs.</h2><a href="https://github.com/gengojs/plugin-parser" target="_blank" class="btn">View on GitHub</a><a href="https://npmjs.com/package/gengojs-default-parser" target="_blank" class="btn">View on npm</a>
     </section>
     <section data-spy="scroll" data-target=".scrollspy" class="main-content">
       <div class="row">
@@ -39,7 +39,7 @@
 <p>See <a href="https://gengojs.github.io/plugin-parser">documentation</a></p>
 <h2>Usage</h2>
 <p>An example usage with options is:</p>
-<pre><code class="language-js">
+<pre><code class="language-javascript">
 var gengo = require('gengojs');
 var parser = require('gengojs-default-parser');
 
@@ -59,7 +59,7 @@ app.use(gengo({
 </code></pre>
 <p>The default parser is already included in gengojs so you should not have to require it.</p>
 <h2>Options</h2>
-<pre><code class="language-js">{
+<pre><code class="language-javascript">{
   // Specify the type of parser to use:
   // default, format, * (all)
   'type': 'default',
@@ -123,7 +123,7 @@ which manages Sprintf and Interpolation, and the latter is <code>format</code> w
 <a href="https://github.com/yahoo/intl-messageformat">MessageFormat</a>.</p>
 <p>By default, the former is your primary parser and can be changed in the options. You may also specify the type to use
 when you use the <a href="https://github.com/iwatakeshi/gengojs-default-api">API</a>. To do so, see the following example:</p>
-<pre><code class="language-js">// Using default parser:
+<pre><code class="language-javascript">// Using default parser:
 __('Hello', {parser:'default'});
 // Using format parser:
 __('You have {n, plural, =0 {no photos.}=1 {one photo.}other {# photos.}}', {parser:'format'});
