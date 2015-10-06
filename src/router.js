@@ -24,7 +24,11 @@ var _find2 = _interopRequireDefault(_find);
 
 var log = (0, _gengojsDebug2['default'])('parser');
 
-/* Router class */
+/**
+ * This class routes the data depending on the
+ * structure of the dictionary
+ * @class Router
+ */
 
 var Router = (function () {
   function Router(input, core) {
@@ -42,12 +46,23 @@ var Router = (function () {
     this._data = this._backend.find(this._locale);
   }
 
+  /**
+   * Determines whether router is enabled.
+   * @return {Boolean} True if router is enabled
+   */
+
   _createClass(Router, [{
     key: 'isEnabled',
     value: function isEnabled() {
       log.debug('class: ' + Router.name, 'process: isEnabled').debug('isEnabled: ', this._router.isEnabled());
       return this._router.isEnabled();
     }
+
+    /**
+     * Returns the global data based on the keyword
+     * @param  {String} keyword The keyword to the value
+     * @return {Object}         The value
+     */
   }, {
     key: 'global',
     value: function global(keyword) {
@@ -56,6 +71,12 @@ var Router = (function () {
       log.info('global result: ', result);
       return result;
     }
+
+    /**
+     * Returns the locale data based on the keyword
+     * @param  {String} keyword The keyword to the value
+     * @return {Object}         The value
+     */
   }, {
     key: 'local',
     value: function local() {

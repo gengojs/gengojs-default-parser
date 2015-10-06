@@ -14,7 +14,11 @@ var _lodash = require('lodash');
 
 var _lodash2 = _interopRequireDefault(_lodash);
 
-/* Find class */
+/**
+ * This class contains custom search
+ * algorithms
+ * @class Find
+ */
 
 var Find = (function () {
   function Find(object) {
@@ -45,6 +49,12 @@ var Find = (function () {
     }
 
     // http://bit.ly/1HWJu9o
+    /** 
+     * Recursively searches for the property
+     * @param  {Object} obj      The object
+     * @param  {String} property The property to search
+     * @return {Object}          The property found.
+     */
   }, {
     key: 'findR',
     value: function findR(obj, property) {

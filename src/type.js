@@ -36,7 +36,12 @@ var _lodash2 = _interopRequireDefault(_lodash);
 
 var log = (0, _gengojsDebug2['default'])('parser');
 
-/* Type class */
+/**
+ * This class determines the type
+ * of notation used.
+ * @class Type
+ * @extends {Notation}
+ */
 
 var Type = (function (_Notation) {
   _inherits(Type, _Notation);

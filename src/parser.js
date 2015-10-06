@@ -52,6 +52,12 @@ var _find2 = _interopRequireDefault(_find);
 
 var log = (0, _gengojsDebug2['default'])('parser');
 var _vsprintf = _sprintfJs2['default'].vsprintf;
+/**
+ * This class parsees the input and returns 
+ * the i18n string depending on the parser specified
+ * @class Parser
+ * @extends {Filter}
+ */
 
 var Parser = (function (_Filter) {
   _inherits(Parser, _Filter);
@@ -60,11 +66,6 @@ var Parser = (function (_Filter) {
     _classCallCheck(this, Parser);
 
     _get(Object.getPrototypeOf(Parser.prototype), 'constructor', this).call(this, input);
-    /**
-     * 1. Parser recieves a string as an input.
-     * 2. The super class will filter the input.
-     * 3. Use Type class to determine the input type
-     */
     log.debug('class: ' + Parser.name, 'process: constructor').debug('filtered input:', this.input = _get(Object.getPrototypeOf(Parser.prototype), 'filter', this).call(this));
     // Set locale
     this.locale = core.header.getLocale();

@@ -14,7 +14,10 @@ var _lodash = require('lodash');
 
 var _lodash2 = _interopRequireDefault(_lodash);
 
-/* Filter class */
+/**
+ * This class filters the input.
+ * @class Filter
+ */
 
 var Filter = (function () {
   function Filter(input) {
