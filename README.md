@@ -126,12 +126,12 @@ __('You have {n, plural, =0 {no photos.}=1 {one photo.}other {# photos.}}', {par
 Unix:
 
 ```bash
-DEBUG=gengo.api
+DEBUG=gengo.parser
 ```
 Windows:
 
 ```bash
-SET DEBUG=gengo.api
+SET DEBUG=gengo.parser
 ```
 
 See [gengojs-debug](https://github.com/gengojs/gengojs-debug) for usage.
