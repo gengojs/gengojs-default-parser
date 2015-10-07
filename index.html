@@ -111,11 +111,31 @@ app.use(gengo({
 <p>Not Applicable</p>
 <h2>Dependencies</h2>
 <ul>
-<li><code>getLocale(locale:String)</code> from <code>Header</code></li>
-<li><code>setLocale(locale:String)</code> from <code>Header</code></li>
-<li><code>toDot()</code> from <code>Router</code></li>
-<li><code>toArray()</code> from <code>Router</code></li>
-<li><code>isEnabled()</code> from <code>Router</code></li>
+<li><code>getLocale(locale:String)</code> from <code>Header</code>
+<ul>
+<li>Should return a string of the current locale.</li>
+</ul>
+</li>
+<li><code>setLocale(locale:String)</code> from <code>Header</code>
+<ul>
+<li>Should set the locale.</li>
+</ul>
+</li>
+<li><code>toDot()</code> from <code>Router</code>
+<ul>
+<li>Should return the URL path as an dotted string.</li>
+</ul>
+</li>
+<li><code>toArray()</code> from <code>Router</code>
+<ul>
+<li>Should return the URL path as an array.</li>
+</ul>
+</li>
+<li><code>isEnabled()</code> from <code>Router</code>
+<ul>
+<li>Should return true if router is enabled.</li>
+</ul>
+</li>
 </ul>
 <h2>Selecting a Parser</h2>
 <p>There are two types of parsers in gengojs-default-parser. The former is the <code>default</code> parser
@@ -130,11 +150,12 @@ __('You have {n, plural, =0 {no photos.}=1 {one photo.}other {# photos.}}', {par
 </code></pre>
 <h2>Debug</h2>
 <p>Unix:</p>
-<pre><code class="language-bash">DEBUG=gengo.parser:*
+<pre><code class="language-bash">DEBUG=gengo.api
 </code></pre>
 <p>Windows:</p>
-<pre><code class="language-bash">SET DEBUG=gengo.parser:*
+<pre><code class="language-bash">SET DEBUG=gengo.api
 </code></pre>
+<p>See <a href="https://github.com/gengojs/gengojs-debug">gengojs-debug</a> for usage.</p>
 </section>
           <div class="footer site-footer">
             <div class="span site-footer-owner"><a href="https://github.com/mr-doc/mr-doc-theme-cayman">Cayman</a> is maintained by <a href="https://github.com/iwatakeshi">iwatakeshi</a>.</div>
