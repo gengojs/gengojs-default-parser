@@ -95,10 +95,15 @@ Not Applicable
 ## Dependencies
 
 * `getLocale(locale:String)` from `Header`
+  * Should return a string of the current locale.
 * `setLocale(locale:String)` from `Header`
+  * Should set the locale.
 * `toDot()` from `Router`
+  * Should return the URL path as an dotted string.
 * `toArray()` from `Router`
+  * Should return the URL path as an array.
 * `isEnabled()` from `Router`
+  * Should return true if router is enabled.
 
 ## Selecting a Parser
 
@@ -121,10 +126,12 @@ __('You have {n, plural, =0 {no photos.}=1 {one photo.}other {# photos.}}', {par
 Unix:
 
 ```bash
-DEBUG=gengo.parser:*
+DEBUG=gengo.api
 ```
 Windows:
 
 ```bash
-SET DEBUG=gengo.parser:*
+SET DEBUG=gengo.api
 ```
+
+See [gengojs-debug](https://github.com/gengojs/gengojs-debug) for usage.
